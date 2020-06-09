@@ -1,0 +1,16 @@
+[
+{
+  "modid": "money",
+  "name": "Economy Mod",
+  "description": "Mod that adds all that connects with economy. Money, printers, banks and etc. Main function is to buy people's items.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Seer'NT"],
+  "credits": "Dandarus",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
