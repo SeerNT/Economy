@@ -25,6 +25,7 @@ import ru.seer.money.Shop;
 import ru.seer.money.ShopTileEntity;
 import ru.seer.money.Test;
 import ru.seer.money.Wallet;
+import scala.Int;
 import seer.money.containers.ContainerCashMachine;
 import seer.money.containers.ContainerShop;
 import seer.money.containers.ContainerShopCustom;
@@ -111,9 +112,11 @@ public class GuiCashMachine extends GuiContainer {
 	static double sumPrice;
 	public Boolean che = false;
 	private int inventoryRows;
+	private double finalBalance;
 	public static boolean isBought = false;
 	public static boolean done = false;
 	public static boolean opened = false;
+	public static boolean isDeleted1 = false;
 	
 	static String sumPriceStr;
 	
@@ -210,6 +213,7 @@ public class GuiCashMachine extends GuiContainer {
 	 @Override
 	 public void initGui()
 	 {
+		 opened = true;
 		 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 		 amount = props.currentMoney;
 		 sumPrice = 0.0;
@@ -287,20 +291,61 @@ public class GuiCashMachine extends GuiContainer {
 	 	   */
 	    }
 	 public double getFinalBalance() {
-		 double finalBalance = 0.0;
-		 double finalBalanceCents = 0.0;
+		 finalBalance = 0.0;
 		 for (int i = 0; i < 12; ++i)
 		 {
 			    boolean testIsNull = isSlotNull(ContainerItem.slotWallet,i);
 				if (testIsNull == false) {
 					 Wallet.isNull[i] = true;
-					 Item slotWallet = ContainerItem.slotWallet.inventory.getStackInSlot(i).getItem();
-					 finalBalance = finalBalance + ContainerItem.slotWallet.inventory.getStackInSlot(i).stackSize;
+					 if(i == 0) {
+						 Wallet.delete = true;
+						 Wallet.adelete = true;
+						 Wallet.spdelete = true;
+					 }if(i == 1) {
+						 Wallet.delete2 = true;
+						 Wallet.adelete2 = true;
+					 } if(i == 2) {
+						 Wallet.delete3 = true;
+						 Wallet.adelete3 = true;
+					 } if(i == 3) {
+						 Wallet.delete4 = true;
+						 Wallet.adelete4 = true;
+					 } if(i == 4) {
+						 Wallet.delete5 = true;
+						 Wallet.adelete5 = true;
+					 } if(i == 5) {
+						 Wallet.delete6 = true;
+						 Wallet.adelete6 = true;
+					 } if(i == 6) {
+						 Wallet.delete7 = true;
+						 Wallet.adelete7 = true;
+					 } if(i == 7) {
+						 Wallet.delete8 = true;
+						 Wallet.adelete8 = true;
+					 } if(i == 8) {
+						 Wallet.delete9 = true;
+						 Wallet.adelete9 = true;
+					 } if(i == 9) {
+						 Wallet.delete10 = true;
+						 Wallet.adelete10 = true;
+					 } if(i == 10) {
+						 Wallet.delete11 = true;
+						 Wallet.adelete11 = true;
+					 }if(i == 11) {
+						 Wallet.delete12 = true;
+						 Wallet.adelete12 = true;
+					 }
+					 if(isAllSlotsNull(ContainerItem.slotWallet) == false) {
+						 Item slotWallet = ContainerItem.slotWallet.inventory.getStackInSlot(i).getItem();
+						 finalBalance = finalBalance + ContainerItem.slotWallet.inventory.getStackInSlot(i).stackSize;
+					 }
 				}
 		 }
-		 fee = finalBalance * 0.05;
-		 fee = round(fee,1);
-		 finalBalance = finalBalance - fee;
+		 if(isAllSlotsNull(ContainerItem.slotWallet) == false) {
+			 fee = finalBalance * 0.05;
+			 fee = round(fee,1);
+			 finalBalance = finalBalance - fee;
+		 }
 		 return finalBalance;
 	 }
 	 public boolean isAllSlotsNull(SlotItemInv slot) {
@@ -329,7 +374,43 @@ public class GuiCashMachine extends GuiContainer {
 		 boolean check = true;
 		 ItemStack slotWallet = slot.inventory.getStackInSlot(id);
 		 if (slotWallet != null) {
-			 check = false;
+			 if(id == 0 && Wallet.adelete == false) {
+				 check = false;
+			 }
+			 else if(id == 1 && Wallet.adelete2 == false) {
+				 check = false;
+			 }
+			 else if(id == 2 && Wallet.adelete3 == false) {
+				 check = false;
+			 }
+			 else if(id == 3 && Wallet.adelete4 == false) {
+				 check = false;
+			 }
+			 else if(id == 4 && Wallet.adelete5 == false) {
+				 check = false;
+			 }
+			 else if(id == 5 && Wallet.adelete6 == false) {
+				 check = false;
+			 }
+			 else if(id == 6 && Wallet.adelete7 == false) {
+				 check = false;
+			 }
+			 else if(id == 7 && Wallet.adelete8 == false) {
+				 check = false;
+			 }
+			 else if(id == 8 && Wallet.adelete9 == false) {
+				 check = false;
+			 }
+			 else if(id == 9 && Wallet.adelete10 == false) {
+				 check = false;
+			 }
+			 else if(id == 10 && Wallet.adelete11 == false) {
+				 check = false;
+			 }
+			 else if(id == 11 && Wallet.adelete12 == false) {
+				 check = false;
+			 }
+			 
 		 }else {
 			 check = true;
 		 }
@@ -340,14 +421,21 @@ public class GuiCashMachine extends GuiContainer {
 		 
 		 if(B.id == 1)
 		 {
-			if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() != null && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() != null) {
-				 ExtendedPlayer props = ExtendedPlayer.get(pla);	
-				 double balance = props.currentMoney + getFinalBalance();
-				 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card) {	
-					 props.currentMoney += balance;
-					 Wallet.delete = true;
+			 ItemStack stack1 = ContainerCashMachine.slot4.inventory.getStackInSlot(0);
+			 ItemStack stack2 = ContainerCashMachine.slot5.inventory.getStackInSlot(1);
+			 ItemStack spstack1 = ContainerItem.slotWallet.inventory.getStackInSlot(0);
+			if(stack1 != null && stack2 != null) {
+				 if(Wallet.spdelete == false && spstack1 != null) {
+					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
+					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
+						 props.currentMoney += getFinalBalance();
+						 finalBalance = 0.0;
+						 opened = true;
+						 Wallet.adelete = false;
+					 }
+					 amount = props.currentMoney;
 				 }
-				 amount = props.currentMoney;
+				 
 			}
 		 } 
 	 }
@@ -364,6 +452,7 @@ public class GuiCashMachine extends GuiContainer {
 	    
 	    sumPriceStr = Double.toString(sumPrice);
 	    */
+		amount = round(amount,1);
 		amountStr = Double.toString(amount);
 		feeStr = Double.toString(fee);
 	    this.fontRendererObj.drawString(amountStr, 7, this.ySize - 156, 4210752);

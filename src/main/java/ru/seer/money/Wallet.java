@@ -27,6 +27,41 @@ public class Wallet extends Item{
 	public static IInventory iinventory;
 	private int counter = 0;
 	public static boolean delete = false;
+	public static boolean delete2 = false;
+	public static boolean delete3 = false;
+	public static boolean delete4 = false;
+	public static boolean delete5 = false;
+	public static boolean delete6 = false;
+	public static boolean delete7 = false;
+	public static boolean delete8 = false;
+	public static boolean delete9 = false;
+	public static boolean delete10 = false;
+	public static boolean delete11 = false;
+	public static boolean delete12 = false;
+	public static boolean adelete = false;
+	public static boolean adelete2 = false;
+	public static boolean adelete3 = false;
+	public static boolean adelete4 = false;
+	public static boolean adelete5 = false;
+	public static boolean adelete6 = false;
+	public static boolean adelete7 = false;
+	public static boolean adelete8 = false;
+	public static boolean adelete9 = false;
+	public static boolean adelete10 = false;
+	public static boolean adelete11 = false;
+	public static boolean adelete12 = false;
+	public static boolean spdelete = false;
+	public static boolean spdelete2 = false;
+	public static boolean spdelete3 = false;
+	public static boolean spdelete4 = false;
+	public static boolean spdelete5 = false;
+	public static boolean spdelete6 = false;
+	public static boolean spdelete7 = false;
+	public static boolean spdelete8 = false;
+	public static boolean spdelete9 = false;
+	public static boolean spdelete10 = false;
+	public static boolean spdelete11 = false;
+	public static boolean spdelete12 = false;
 	public static Boolean[] isNull = new Boolean[13];
 	protected Wallet() {
 		  super();
@@ -67,23 +102,74 @@ public class Wallet extends Item{
 				counter = counter + 1;
 				 
 				if(counter == 2) {
-					for (int i = 0; i < 12; ++i)
-					 {
-						 	 if(GuiCashMachine.opened == true) {
-						 		ContainerItem.slotWallet.inventory.setInventorySlotContents(i, null);
-						 		//гдеяэ опнакелю
-						 		if(isNull[i] == true && delete == true) {
-									 ContainerItem.slotWallet.inventory.setInventorySlotContents(i, null);
-									 counter = 0;
-									 isNull[i] = false;
-								 }
-						 	 }else {
-						 		counter = 0; 
-						 	 }
-							 delete = false;
-						 
-					 }
 					counter = 0;
+					if(GuiCashMachine.opened == true) {
+						if(delete == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(0, null);
+							counter = 0;
+							delete = false; 
+							spdelete = false;
+						}
+						 if(delete2 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(1, null);
+							counter = 0;
+							delete2 = false; 
+						}
+						 if(delete3 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(2, null);
+							counter = 0;
+							delete3 = false; 
+						}
+						 if(delete4 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(3, null);
+							counter = 0;
+							delete4 = false; 
+						}
+						 if(delete5 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(4, null);
+							counter = 0;
+							delete5 = false; 
+						}
+						 if(delete6 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(5, null);
+							counter = 0;
+							delete6 = false; 
+						}
+						 if(delete7 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(6, null);
+							counter = 0;
+							delete7 = false; 
+						}
+						 if(delete8 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(7, null);
+							counter = 0;
+							delete8 = false; 
+						}
+						 if(delete9 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(8, null);
+							counter = 0;
+							delete9 = false; 
+						}
+						 if(delete10 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(9, null);
+							counter = 0;
+							delete10 = false; 
+						}
+						 if(delete11 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(10, null);
+							counter = 0;
+							delete11 = false; 
+						}
+						 if(delete12 == true) {
+							ContainerItem.slotWallet.inventory.setInventorySlotContents(11, null);
+							counter = 0;
+							delete12 = false; 
+						}else {
+					 		counter = 0; 
+					 	}
+								
+					counter = 0;
+					}
 				}
 			}
 			return itemstack;
