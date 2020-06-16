@@ -358,7 +358,6 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber = 0;
 	        		item1_type_amount = 0;
 	        	}
-	        	safeTileEntity.item_type_amount[0] = item1_type_amount;
 	        	sumPrice = item1_price * item1_type_amount;
 	        	item1_price = 0.0;
 	        	stringPageText[0]="x" + String.valueOf(pageNumber);
@@ -573,10 +572,10 @@ public class GuiShop extends GuiContainer {
 		sumPrice = round(sumPrice,2);
 	    amountStr = Double.toString(amount);
 	    sumPriceStr = Double.toString(sumPrice);
-	    this.fontRendererObj.drawString("Balance", 6, this.ySize - 150, 4210752);
-		this.fontRendererObj.drawString(amountStr, 7, this.ySize - 159, 4210752);
-		this.fontRendererObj.drawString("Price", 6, this.ySize - 113, 4210752);
-		this.fontRendererObj.drawString(sumPriceStr, 7, this.ySize - 123, 4210752);	
+	    this.fontRendererObj.drawString("Balance", 6, this.ySize - 145, 4210752);
+		this.fontRendererObj.drawString(amountStr, 7, this.ySize - 153, 4210752);
+		this.fontRendererObj.drawString("Price", 6, this.ySize - 110, 4210752);
+		this.fontRendererObj.drawString(sumPriceStr, 7, this.ySize - 118, 4210752);	
 		this.fontRendererObj.drawString(stringPageText[0], 69, this.ySize - 141, 4210752);	
 		this.fontRendererObj.drawString(stringPageText2[0], 95, this.ySize - 141, 4210752);	
 		this.fontRendererObj.drawString(stringPageText3[0], 121, this.ySize - 141, 4210752);	

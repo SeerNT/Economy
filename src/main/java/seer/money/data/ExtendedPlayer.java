@@ -40,7 +40,6 @@ public final static String EXT_PROP_NAME = "ExtendedPlayer";
 		this.currentPassword[3] = 6;
 		this.isDestroyed = true;
 		this.currentMana = 0.0;
-		this.currentMoney = 0.0;
 	}
 	
 	/**

@@ -95,6 +95,9 @@ public class Wallet extends Item{
     @Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
+    		ExtendedPlayer props = ExtendedPlayer.get(player);
+		
+    		value = props.currentMana;	
 			iinventory = player.inventory;
 			// If player not sneaking, open the inventory gui
 			if (!player.isSneaking()) {
@@ -114,56 +117,67 @@ public class Wallet extends Item{
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(1, null);
 							counter = 0;
 							delete2 = false; 
+							spdelete2 = false;
 						}
 						 if(delete3 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(2, null);
 							counter = 0;
 							delete3 = false; 
+							spdelete3 = false;
 						}
 						 if(delete4 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(3, null);
 							counter = 0;
 							delete4 = false; 
+							spdelete4 = false;
 						}
 						 if(delete5 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(4, null);
 							counter = 0;
 							delete5 = false; 
+							spdelete5 = false;
 						}
 						 if(delete6 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(5, null);
 							counter = 0;
 							delete6 = false; 
+							spdelete6 = false;
 						}
 						 if(delete7 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(6, null);
 							counter = 0;
 							delete7 = false; 
+							spdelete7 = false;
 						}
 						 if(delete8 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(7, null);
 							counter = 0;
 							delete8 = false; 
+							spdelete8 = false;
 						}
 						 if(delete9 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(8, null);
 							counter = 0;
 							delete9 = false; 
+							spdelete9 = false;
 						}
 						 if(delete10 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(9, null);
 							counter = 0;
-							delete10 = false; 
+							delete10 = false;
+							spdelete10 = false;
 						}
 						 if(delete11 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(10, null);
 							counter = 0;
 							delete11 = false; 
+							spdelete11 = false;
 						}
 						 if(delete12 == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(11, null);
 							counter = 0;
 							delete12 = false; 
+							spdelete12 = false;
 						}else {
 					 		counter = 0; 
 					 	}
@@ -176,13 +190,14 @@ public class Wallet extends Item{
     }
 		
 	
-	/*
+
 	public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
 		EntityPlayer player = p_77663_2_.getClosestPlayerToEntity(p_77663_3_, 5);
 		ExtendedPlayer props = ExtendedPlayer.get(player);
 		
-		value = props.currentMana;
+		props.currentMoney = GuiCashMachine.amount;
 	}
+	/*
 	public void onCreated(ItemStack item, World world, EntityPlayer player) {
 		if(MoneyEventHandler.sh == true) {
 			if(!player.worldObj.isRemote) {
