@@ -2,15 +2,21 @@ package seer.money.gen;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockDirectional;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDoor;
+import net.minecraft.util.Direction;
+import net.minecraft.util.Facing;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
 import ru.seer.money.Test;
 
 public class WorldGenBankStructure extends WorldGenerator{
-	private static final String __OBFID = "CL_00000428";
 	Blocks b;
-
+	
     public boolean generate(World world, Random p_76484_2_, int x, int y, int z)
     {
         for (int l = 0; l < 64; ++l)
@@ -33,8 +39,8 @@ public class WorldGenBankStructure extends WorldGenerator{
         		// Cтенки
         		world.setBlock(x, y + 1, z, b.planks); 
         		world.setBlock(x, y + 1, z + 1, b.planks);
-        		//world.setBlock(x, y + 1, z + 2, b.wooden_door);
-        		//world.setBlock(x, y + 1, z + 3, b.wooden_door);
+        		ItemDoor.placeDoorBlock(world, x, y + 1, z + 2,0, b.wooden_door);
+        		ItemDoor.placeDoorBlock(world, x, y + 1, z + 3,0, b.wooden_door);
         		world.setBlock(x, y + 1, z + 4, b.planks);
         		world.setBlock(x, y + 1, z + 5, b.planks);
         		world.setBlock(x, y + 1, z + 6, b.planks);
