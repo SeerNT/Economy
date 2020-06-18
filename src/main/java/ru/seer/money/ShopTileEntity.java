@@ -14,10 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-<<<<<<< HEAD
-=======
 import net.minecraft.world.World;
->>>>>>> Recovery,achievments and other fixes
 import seer.money.rendering.tiles.TutFurnaceRecipes;
 
 public class ShopTileEntity extends TileEntity implements ISidedInventory {
@@ -79,9 +76,6 @@ public class ShopTileEntity extends TileEntity implements ISidedInventory {
 		}
 	}
 
-<<<<<<< HEAD
-
-=======
 	public void onCreated(Block item, World world, EntityPlayer player) {
 		if(!player.worldObj.isRemote) {
 			if(item.isEqualTo(Test.Shop, item)) {
@@ -90,7 +84,6 @@ public class ShopTileEntity extends TileEntity implements ISidedInventory {
 			}
 		}
 	}
->>>>>>> Recovery,achievments and other fixes
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		if (this.furnaceItemStacks[slot] != null) {

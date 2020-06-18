@@ -85,9 +85,23 @@ tile.Omega Printer.name=Omega Printer
 tile.Million Printer.name=Million Printer 
 tile.Printer.name=Printer
 tile.AmethystBlock.name=Amethyst Block
-<<<<<<< HEAD
-=======
 
+achievement.rich=Rich Monkey
+achievement.rich.desc=Have more than 10000 dollars
+achievement.rob=Hands Up!
+achievement.rob.desc=Rob Bank
+achievement.sucrob=Deal With It
+achievement.sucrob.desc=Stand out raid
+achievement.revenge=Sweety Revenge
+achievement.revenge.desc=Kill the police gunner, who killed you
+achievement.police=THEY KILLED BOB
+achievement.police.desc=Kill Police
+achievement.civ=Civilization
+achievement.civ.desc=Find City 
+achievement.printerman=Printer Man
+achievement.printerman.desc=Craft every printer
+achievement.cashmachine=Limitless Money
+achievement.cashmachine.desc=Craft cash machine
 achievement.shop=Shopping Time!
 achievement.shop.desc=Craft a Shop
 achievement.worth=Worth It
@@ -96,7 +110,6 @@ achievement.luxury=Some Luxury
 achievement.luxury.desc=Mine Opal Ore and Sapphire Ore
 achievement.boom=Art
 achievement.boom.desc=I'm a kind of miner too
->>>>>>> Recovery,achievments and other fixes
 achievement.start=Welcome to the club buddy
 achievement.start.desc=Install Economy Mod
 achievement.firstdollar=Piece of Paper

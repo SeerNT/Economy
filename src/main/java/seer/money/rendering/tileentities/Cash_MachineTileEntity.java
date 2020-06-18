@@ -19,8 +19,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import ru.seer.money.Cash_Machine;
+import ru.seer.money.CommonProxy;
 import ru.seer.money.Printer;
 import ru.seer.money.ShopRecipes;
+import ru.seer.money.Test;
 
 public class Cash_MachineTileEntity extends TileEntity implements ISidedInventory {
 	public Cash_MachineTileEntity() {
@@ -39,7 +41,13 @@ public class Cash_MachineTileEntity extends TileEntity implements ISidedInventor
 		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 	public static int facing;
-
+	public void onCreated(Block item, World world, EntityPlayer player) {
+		if(!player.worldObj.isRemote) {
+			if(item.isEqualTo(Test.Cash_Machine, item)) {
+				player.addStat(CommonProxy.achievementCashMachine, 1);
+			}
+		}
+	}
 	@Override
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 	super.readFromNBT(nbttagcompound);

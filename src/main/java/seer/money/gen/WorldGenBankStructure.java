@@ -10,15 +10,20 @@ import net.minecraft.item.ItemDoor;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Facing;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import ru.seer.money.Test;
 
 public class WorldGenBankStructure extends WorldGenerator{
 	Blocks b;
-	
+	public static BiomeGenBase biome_player;
+	public static int x2;
+	public static int z2;
     public boolean generate(World world, Random p_76484_2_, int x, int y, int z)
     {
+    	biome_player = world.getBiomeGenForCoords(x, z);
+    	
         for (int l = 0; l < 64; ++l)
         {
             int i1 = x + p_76484_2_.nextInt(8) - p_76484_2_.nextInt(8);
@@ -329,8 +334,6 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 9, y, z + 6, b.planks);
         		world.setBlock(x + 9, y, z + 7, b.planks);
         		world.setBlock(x + 9, y, z + 8, b.planks);
-<<<<<<< HEAD
-=======
         		
         		//Крыша
         		world.setBlock(x + 1, y + 6, z, b.planks); 
@@ -432,7 +435,6 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 10, y + 6, z + 6, b.planks);
         		world.setBlock(x + 10, y + 6, z + 7, b.planks);
         		world.setBlock(x + 10, y + 6, z + 8, b.planks);
->>>>>>> Recovery,achievments and other fixes
             }
         }
 

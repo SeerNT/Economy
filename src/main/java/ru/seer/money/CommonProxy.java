@@ -22,13 +22,20 @@ public class CommonProxy
 	public static Achievement achievementFirstGoodTool;
 	public static Achievement achievementCombatSet;
 	public static Achievement achievementPairOfBows;
-<<<<<<< HEAD
-=======
 	public static Achievement achievementBoom;
 	public static Achievement achievementLuxury;
 	public static Achievement achievementWorth;
 	public static Achievement achievementShopping;
->>>>>>> Recovery,achievments and other fixes
+	public static Achievement achievementPrinterMan;
+	public static Achievement achievementCashMachine;
+	//Civilization
+	public static Achievement achievementCiv;
+	public static Achievement achievementPolice;
+	public static Achievement achievementRob;
+	public static Achievement achievementSucRob;
+	public static Achievement achievementRich;
+	public static Achievement achievementRevenge;
+	
     public void preInit(FMLPreInitializationEvent event)
     {
 
@@ -40,6 +47,7 @@ public class CommonProxy
     public void init(FMLInitializationEvent event)
     {
     	MinecraftForge.EVENT_BUS.register(new EventsHandler());
+    	//Beginning
     	achievementStart =  new Achievement("achievement.start", "start", 
     		      0, 0, Blocks.gold_block, (Achievement)null);
       	achievementFirstDollar =  new Achievement("achievement.firstdollar", "firstdollar", 
@@ -52,37 +60,57 @@ public class CommonProxy
   		      -2, 2, new ItemStack(Test.Card), achievementWallet);
       	achievementPrinter =  new Achievement("achievement.printer", "printer", 
     		      -2, -2, Test.Printer,achievementWallet);
-<<<<<<< HEAD
-=======
       	achievementShopping =  new Achievement("achievement.shop", "shop", 
   		      -4, -2, Test.Shop,achievementPrinter);
->>>>>>> Recovery,achievments and other fixes
       	achievementAmethyst =  new Achievement("achievement.amethyst", "amethyst", 
     		      0, 2, Test.AmethystOre,achievementStart);	
       	achievementRuby =  new Achievement("achievement.ruby", "ruby", 
     		      0, 4, Test.RubyOre,achievementAmethyst);
-<<<<<<< HEAD
-=======
       	achievementLuxury = new Achievement("achievement.luxury", "luxury", 
   		      0, 6, Test.OpalOre,achievementRuby);
       	achievementWorth = new Achievement("achievement.worth", "worth", 
     		      -2, 6, Test.OpalSword,achievementLuxury.setSpecial());
->>>>>>> Recovery,achievments and other fixes
       	achievementFirstGoodTool =  new Achievement("achievement.firstgoodtool", "goodtool", 
   		      2, 4, Test.RubyPickaxe,achievementRuby.setSpecial());
       	achievementCombatSet =  new Achievement("achievement.combatset", "combatset", 
     		      -2, 4, Test.RubySword,achievementRuby);
       	achievementPairOfBows =  new Achievement("achievement.pairofbows", "pairofbows", 
   		      -4, 4, Test.RubyBow,achievementCombatSet);
-<<<<<<< HEAD
-=======
       	achievementBoom =  new Achievement("achievement.boom", "boom", 
     		      -6, 4, Test.Explosive,achievementPairOfBows);
+      	achievementPrinterMan =  new Achievement("achievement.printerman", "printerman", 
+  		      0, -2, Test.MillionPackOfDollars,achievementPrinter);
+      	achievementCashMachine =  new Achievement("achievement.cashmachine", "cashmachine", 
+    		      2, -2, Test.Cash_Machine,achievementPrinterMan);
+      	//Civilization
+      	achievementCiv =  new Achievement("achievement.civ", "civ", 
+  		      0, 0, Test.Dollars, (Achievement)null);
+      	achievementPolice =  new Achievement("achievement.police", "police", 
+    		      -2, 0, Test.Bat, achievementCiv);
+      	achievementRob =  new Achievement("achievement.rob", "rob", 
+  		      -4, 0, Test.Signalization_Button, achievementPolice);
+      	achievementSucRob =  new Achievement("achievement.sucrob", "sucrob", 
+    		      -6, 0, Test.ReadyBlock, achievementRob);
+      	achievementRevenge =  new Achievement("achievement.revenge", "revenge", 
+  		      -2, -2, Test.Blood, achievementPolice);
+      	achievementRich =  new Achievement("achievement.rich", "rich", 
+    		      0, 2, Blocks.diamond_block, achievementCiv);
+      	//Registry
+      	achievementPrinterMan.setSpecial();
+      	achievementCiv.setSpecial();
+      	achievementRevenge.setSpecial();
+      	achievementRich.setSpecial();
+      	achievementCiv.registerStat();
+      	achievementPolice.registerStat();
+      	achievementRob.registerStat();
+      	achievementSucRob.registerStat();
+      	achievementRevenge.registerStat();
+      	achievementRich.registerStat();
+      	achievementCashMachine.registerStat();
       	achievementShopping.registerStat();
       	achievementWorth.registerStat();
       	achievementLuxury.registerStat();
       	achievementBoom.registerStat();
->>>>>>> Recovery,achievments and other fixes
       	achievementPairOfBows.registerStat();
       	achievementCombatSet.registerStat();
       	achievementFirstGoodTool.registerStat();
@@ -94,16 +122,17 @@ public class CommonProxy
     	achievementPrinter.registerStat();
     	achievementRuby.registerStat();
     	achievementAmethyst.registerStat();
+    	//Achievement Pages
     	AchievementPage.registerAchievementPage(
     		      new AchievementPage("Economy Beginning", 
     		            new Achievement[] {achievementStart, achievementFirstDollar, achievementFirstPackOfDollars,
     		            		achievementWallet, achievementCard, achievementPrinter, achievementRuby, achievementAmethyst,
-<<<<<<< HEAD
-    		            		achievementFirstGoodTool,achievementCombatSet, achievementPairOfBows}));
-=======
     		            		achievementFirstGoodTool,achievementCombatSet, achievementPairOfBows, achievementBoom,
-    		            		achievementLuxury,achievementWorth,achievementShopping}));
->>>>>>> Recovery,achievments and other fixes
+    		            		achievementLuxury,achievementWorth,achievementShopping,achievementPrinterMan,achievementCashMachine}));
+    	AchievementPage.registerAchievementPage(
+  		      new AchievementPage("Economy Civilization", 
+  		            new Achievement[] {achievementCiv,achievementPolice, achievementRob, achievementSucRob,
+  		            		achievementRich,achievementRevenge}));
     }
 
     public void postInit(FMLPostInitializationEvent event) {

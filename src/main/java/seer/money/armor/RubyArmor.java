@@ -36,7 +36,7 @@ public class RubyArmor extends ItemArmor {
 					RubySword.achiVal += 0.5;
 					rc = true;
 				}
-				if(RubySword.achiVal == 2.5 && rc == false) {
+				if(RubySword.achiVal >= 2.5 && rc == false) {
 					player.addStat(CommonProxy.achievementCombatSet, 1);
 				}
 				
@@ -46,7 +46,7 @@ public class RubyArmor extends ItemArmor {
 					RubySword.achiVal += 0.5;
 					rh = true;
 				}
-				if(RubySword.achiVal == 2.5 && rh == false) {
+				if(RubySword.achiVal >= 2.5 && rh == false) {
 					player.addStat(CommonProxy.achievementCombatSet, 1);
 				}
 				
@@ -56,7 +56,7 @@ public class RubyArmor extends ItemArmor {
 					RubySword.achiVal += 0.5;
 					rp = true;
 				}
-				if(RubySword.achiVal == 2.5 && rp == false) {
+				if(RubySword.achiVal >= 2.5 && rp == false) {
 					player.addStat(CommonProxy.achievementCombatSet, 1);
 				}
 				

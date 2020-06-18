@@ -106,9 +106,23 @@ item.AmethystHelmet.name=Amethyst Helmet
 item.AmethystChestplate.name=Amethyst Chestplate
 item.AmethystPants.name=Amethyst Pants
 item.AmethystBoots.name=Amethyst Boots
-<<<<<<< HEAD
-=======
 
+achievement.rich=Rich Monkey
+achievement.rich.desc=Have more than 10000 dollars
+achievement.rob=Hands Up!
+achievement.rob.desc=Rob Bank
+achievement.sucrob=Deal With It
+achievement.sucrob.desc=Stand out raid
+achievement.revenge=Sweety Revenge
+achievement.revenge.desc=Kill the police, who killed you, with a bat
+achievement.police=THEY KILLED BOB
+achievement.police.desc=Kill Police
+achievement.civ=Civilization
+achievement.civ.desc=Find City 
+achievement.printerman=Printer Man
+achievement.printerman.desc=Craft every printer
+achievement.cashmachine=Limitless Money
+achievement.cashmachine.desc=Craft cash machine
 achievement.shop=Shopping Time!
 achievement.shop.desc=Craft a Shop
 achievement.worth=Worth It
@@ -117,7 +131,6 @@ achievement.luxury=Some Luxury
 achievement.luxury.desc=Mine Opal Ore and Sapphire Ore
 achievement.boom=Art
 achievement.boom.desc=I'm a kind of miner too
->>>>>>> Recovery,achievments and other fixes
 achievement.ruby=Red Gold
 achievement.ruby.desc=Mine ruby
 achievement.amethyst=Better than diamond

@@ -135,7 +135,6 @@ public class Test implements IRecipe {
 	public static Block SapphireOre;
 	public static Block SapphireBlock;
 	public static Block OpalBlock;
-	public static Block BankStructure;
 	public static Item Bat;
 	public static Item Pistol;
 	public static Item pistBullet;
@@ -144,8 +143,8 @@ public class Test implements IRecipe {
 	public static Block amethystSlab;
 	public static Block amethystSlab_double;
 	public static String MODID = "money";
+	public static Item Blood;
 	private static int modGuiIndex = 1;
-	private WorldGen WorldGen2 = new WorldGen();
 	
 	@EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -158,6 +157,7 @@ public class Test implements IRecipe {
 		registerEntity(PoliceManGunner.class, "PoliceManGunner", 0x0000CD, 0x00008B);
 		registerEntity(PoliceManGirlGunner.class, "PoliceManGirlGunner", 0x0000CD, 0x6495ED);
 		
+		Blood = new Blood().setUnlocalizedName("blood");
 		rubySlab = new CustomRubySlab(false).setBlockTextureName("money:rubySlab").setStepSound(Block.soundTypeStone);
 		rubySlab_double = new CustomRubySlab(true).setBlockTextureName("money:rubySlab").setStepSound(Block.soundTypeStone);
 		
@@ -166,15 +166,14 @@ public class Test implements IRecipe {
 		
 		pistBullet = new pistBullet();
 		Pistol = new Pistol();
-		BankStructure = new BankStructure(Material.rock).setBlockName("BankStructure");
 		Bat = new Bat().setUnlocalizedName("Bat");
 		
 		OpalBlock = new OpalBlock();
 		SapphireBlock = new SapphireBlock();
-		Opal = new Opal().setUnlocalizedName("opal");;
+		Opal = new Opal().setUnlocalizedName("opal");
 		OpalOre = new OpalOre();
 		SapphireOre = new SapphireOre();
-		Sapphire = new Sapphire().setUnlocalizedName("sapphire");;
+		Sapphire = new Sapphire().setUnlocalizedName("sapphire");
 		
 		
 		safe = new safe(0);
@@ -265,6 +264,7 @@ public class Test implements IRecipe {
 		rubyStairs = new rubyStairs(RubyBlock, 0);
 		amethystStairs = new amethystStairs(AmethystBlock, 0);
 		
+		GameRegistry.registerItem(Blood, "Blood");
 		GameRegistry.registerItem(pistBullet, "pistBullet");
 		GameRegistry.registerItem(Bat, "Bat");
 		GameRegistry.registerItem(OpalSword, "OpalSword");
@@ -321,7 +321,6 @@ public class Test implements IRecipe {
 		GameRegistry.registerBlock(SapphireOre, "SapphireOre");
 		GameRegistry.registerBlock(amethystStairs, "amethystStairs");
 		GameRegistry.registerBlock(rubyStairs, "rubyStairs");
-		GameRegistry.registerBlock(BankStructure, "BankStructure");
 		GameRegistry.registerBlock(safe, "safe");
 		GameRegistry.registerBlock(ReinforcedTrapdoor, "ReinforcedTrapdoor");
 		GameRegistry.registerBlock(Signalization_Button, "Signalization_Button");
@@ -370,7 +369,7 @@ public class Test implements IRecipe {
     {
     	GameRegistry.registerWorldGenerator(ametGen, 0);
     	GameRegistry.registerWorldGenerator(bestblockgenerator, 0);
-    	GameRegistry.registerWorldGenerator(WorldGen2, 0);
+
     	GameRegistry.addSmelting(RubyOre, new ItemStack(Ruby, 1), 35.0F);
     	GameRegistry.addSmelting(AmethystOre, new ItemStack(Amethyst, 1), 20.0F);
     	GameRegistry.addSmelting(OpalOre, new ItemStack(Opal, 1), 40.0F);
@@ -1067,12 +1066,6 @@ public class Test implements IRecipe {
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
-<<<<<<< HEAD
-       FMLCommonHandler.instance().bus().register(new MoneyEventHandler());
-
-
-=======
->>>>>>> Recovery,achievments and other fixes
     }
     public static void registerEntity(Class entityClass, String name, int primaryColor, int secondaryColor)
     {

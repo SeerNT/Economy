@@ -21,7 +21,7 @@ public class RubySword extends ItemSword{
 					achiVal += 1.0;
 				}
 				check = true;
-				if(RubySword.achiVal == 2.5) {
+				if(RubySword.achiVal >= 2.5) {
 					player.addStat(CommonProxy.achievementCombatSet, 1);
 				}
 				

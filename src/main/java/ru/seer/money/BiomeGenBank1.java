@@ -44,11 +44,11 @@ public class BiomeGenBank1 extends BiomeGenBase{
 		this.theBiomeDecorator.bigMushroomsPerChunk = 5;
 		this.topBlock = Blocks.grass;
 		
+		
 	}
 	public void decorate(World p_76728_1_, Random p_76728_2_, int p_76728_3_, int p_76728_4_)
     {
         super.decorate(p_76728_1_, p_76728_2_, p_76728_3_, p_76728_4_);
-
         if (p_76728_2_.nextInt(50) == 0)
         {
             int k = p_76728_3_ + p_76728_2_.nextInt(16) + 8;

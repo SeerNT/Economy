@@ -26,6 +26,7 @@ public class Wallet extends Item{
 	public static double damage = 0.0;
 	public static IInventory iinventory;
 	private int counter = 0;
+	public static boolean open = false;
 	public static boolean delete = false;
 	public static boolean delete2 = false;
 	public static boolean delete3 = false;
@@ -96,7 +97,7 @@ public class Wallet extends Item{
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
     		ExtendedPlayer props = ExtendedPlayer.get(player);
-		
+    		open  = true;
     		value = props.currentMana;	
 			iinventory = player.inventory;
 			// If player not sneaking, open the inventory gui

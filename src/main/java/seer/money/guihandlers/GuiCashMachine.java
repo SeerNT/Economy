@@ -113,11 +113,26 @@ public class GuiCashMachine extends GuiContainer {
 	public Boolean che = false;
 	private int inventoryRows;
 	private double finalBalance;
+	private ItemStack stack1;
+	private ItemStack stack2;
+	private ItemStack spstack1;
+	private ItemStack spstack2;
+	private ItemStack spstack3;
+	private ItemStack spstack4;
+	private ItemStack spstack5;
+	private ItemStack spstack6;
+	private ItemStack spstack7;
+	private ItemStack spstack8;
+	private ItemStack spstack9;
+	private ItemStack spstack10;
+	private ItemStack spstack11;
+	private ItemStack spstack12;
 	public static boolean isBought = false;
 	public static boolean done = false;
 	public static boolean opened = false;
 	public static boolean isDeleted1 = false;
-	
+	private int counter = 0;
+	private boolean allOk = false;
 	static String sumPriceStr;
 	
 	public GuiCashMachine(InventoryPlayer invPlayer, Cash_MachineTileEntity tile, World world, EntityPlayer player, int x, int y, int z) {
@@ -346,34 +361,31 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete12 = true;
 						 Wallet.spdelete12 = true;
 					 }
-					 if(isAllSlotsNull(ContainerItem.slotWallet) == false) {
-						 Item slotWallet = ContainerItem.slotWallet.inventory.getStackInSlot(i).getItem();
-						 finalBalance = finalBalance + ContainerItem.slotWallet.inventory.getStackInSlot(i).stackSize;
-					 }
+					Item slotWallet = ContainerItem.slotWallet.inventory.getStackInSlot(i).getItem();
+					finalBalance = finalBalance + ContainerItem.slotWallet.inventory.getStackInSlot(i).stackSize;
+					allOk  = true;
 				}
 		 }
-		 if(isAllSlotsNull(ContainerItem.slotWallet) == false) {
+		 if(allOk == true) {
 			 fee = finalBalance * 0.05;
 			 fee = round(fee,1);
 			 finalBalance = finalBalance - fee;
+			 allOk = false;
 		 }
 		 return finalBalance;
 	 }
 	 public boolean isAllSlotsNull(SlotItemInv slot) {
 		 Boolean[] isSlotNull = new Boolean[13];
 		 boolean check = true;
-		 int notNullInArray = 0;
+		 int isSlotNull_size = 0;
 		 for (int i = 0; i < 12; ++i)
 		 {
-				ItemStack slotWallet = slot.inventory.getStackInSlot(i);
-				if (slotWallet != null) {}
-				else {
-					isSlotNull[i] = false;
-					notNullInArray = notNullInArray + 1;
-				}
+			 
+			 if(isSlotNull(slot,i) == false) {
+				 isSlotNull_size += 1;
+			 }
 				
 		 }
-		 int isSlotNull_size = notNullInArray;
 		 if(isSlotNull_size == 0) {
 			 check = true;
 		 }else {
@@ -428,24 +440,27 @@ public class GuiCashMachine extends GuiContainer {
 		 return check;
 	 }
 	 protected void actionPerformed(GuiButton B)
-	 {
-		 
+	 { 
 		 if(B.id == 1)
 		 {
-			 ItemStack stack1 = ContainerCashMachine.slot4.inventory.getStackInSlot(0);
-			 ItemStack stack2 = ContainerCashMachine.slot5.inventory.getStackInSlot(1);
-			 ItemStack spstack1 = ContainerItem.slotWallet.inventory.getStackInSlot(0);
-			 ItemStack spstack2 = ContainerItem.slotWallet.inventory.getStackInSlot(1);
-			 ItemStack spstack3 = ContainerItem.slotWallet.inventory.getStackInSlot(2);
-			 ItemStack spstack4 = ContainerItem.slotWallet.inventory.getStackInSlot(3);
-			 ItemStack spstack5 = ContainerItem.slotWallet.inventory.getStackInSlot(4);
-			 ItemStack spstack6 = ContainerItem.slotWallet.inventory.getStackInSlot(5);
-			 ItemStack spstack7 = ContainerItem.slotWallet.inventory.getStackInSlot(6);
-			 ItemStack spstack8 = ContainerItem.slotWallet.inventory.getStackInSlot(7);
-			 ItemStack spstack9 = ContainerItem.slotWallet.inventory.getStackInSlot(8);
-			 ItemStack spstack10 = ContainerItem.slotWallet.inventory.getStackInSlot(9);
-			 ItemStack spstack11= ContainerItem.slotWallet.inventory.getStackInSlot(10);
-			 ItemStack spstack12 = ContainerItem.slotWallet.inventory.getStackInSlot(11);
+			 counter += 1;
+			 if (Wallet.open == true) {
+				  stack1 = ContainerCashMachine.slot4.inventory.getStackInSlot(0);
+				  stack2 = ContainerCashMachine.slot5.inventory.getStackInSlot(1);
+				  spstack1 = ContainerItem.slotWallet.inventory.getStackInSlot(0);
+				  spstack2 = ContainerItem.slotWallet.inventory.getStackInSlot(1);
+				  spstack3 = ContainerItem.slotWallet.inventory.getStackInSlot(2);
+				  spstack4 = ContainerItem.slotWallet.inventory.getStackInSlot(3);
+				  spstack5 = ContainerItem.slotWallet.inventory.getStackInSlot(4);
+				  spstack6 = ContainerItem.slotWallet.inventory.getStackInSlot(5);
+				  spstack7 = ContainerItem.slotWallet.inventory.getStackInSlot(6);
+				  spstack8 = ContainerItem.slotWallet.inventory.getStackInSlot(7);
+				  spstack9 = ContainerItem.slotWallet.inventory.getStackInSlot(8);
+				  spstack10 = ContainerItem.slotWallet.inventory.getStackInSlot(9);
+				  spstack11= ContainerItem.slotWallet.inventory.getStackInSlot(10);
+				  spstack12 = ContainerItem.slotWallet.inventory.getStackInSlot(11);
+			 }
+			 
 			if(stack1 != null && stack2 != null) {
 				 if(Wallet.spdelete == false && spstack1 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
@@ -456,7 +471,8 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete2 == false && spstack2 != null) {
+				 }
+				 if(Wallet.spdelete2 == false && spstack2 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -465,7 +481,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete2 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete3 == false && spstack3 != null) {
+				 } if(Wallet.spdelete3 == false && spstack3 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -474,7 +490,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete3 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete4 == false && spstack4 != null) {
+				 } if(Wallet.spdelete4 == false && spstack4 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -483,7 +499,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete4 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete5 == false && spstack5 != null) {
+				 } if(Wallet.spdelete5 == false && spstack5 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -492,7 +508,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete5 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete6 == false && spstack6 != null) {
+				 } if(Wallet.spdelete6 == false && spstack6 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -501,7 +517,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete6 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete7 == false && spstack7 != null) {
+				 } if(Wallet.spdelete7 == false && spstack7 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -510,7 +526,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete7 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete8 == false && spstack8 != null) {
+				 } if(Wallet.spdelete8 == false && spstack8 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -519,7 +535,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete8 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete9 == false && spstack9 != null) {
+				 } if(Wallet.spdelete9 == false && spstack9 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -528,7 +544,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete9 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete10 == false && spstack10 != null) {
+				 } if(Wallet.spdelete10 == false && spstack10 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -537,7 +553,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete10 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete11 == false && spstack11 != null) {
+				 } if(Wallet.spdelete11 == false && spstack11 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -546,7 +562,7 @@ public class GuiCashMachine extends GuiContainer {
 						 Wallet.adelete11 = false;
 					 }
 					 amount = props.currentMoney;
-				 }else if(Wallet.spdelete12 == false && spstack12 != null) {
+				 } if(Wallet.spdelete12 == false && spstack12 != null) {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
@@ -558,6 +574,11 @@ public class GuiCashMachine extends GuiContainer {
 					 amount = props.currentMoney;
 				 }
 				 
+			}
+			if(counter < 12) {
+				this.actionPerformed(B);
+			}else if(counter >= 12) {
+				counter = 0;
 			}
 		 } 
 	 }
