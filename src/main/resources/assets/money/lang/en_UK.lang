@@ -85,6 +85,18 @@ tile.Omega Printer.name=Omega Printer
 tile.Million Printer.name=Million Printer 
 tile.Printer.name=Printer
 tile.AmethystBlock.name=Amethyst Block
+<<<<<<< HEAD
+=======
+
+achievement.shop=Shopping Time!
+achievement.shop.desc=Craft a Shop
+achievement.worth=Worth It
+achievement.worth.desc=Craft an Opal Sword
+achievement.luxury=Some Luxury
+achievement.luxury.desc=Mine Opal Ore and Sapphire Ore
+achievement.boom=Art
+achievement.boom.desc=I'm a kind of miner too
+>>>>>>> Recovery,achievments and other fixes
 achievement.start=Welcome to the club buddy
 achievement.start.desc=Install Economy Mod
 achievement.firstdollar=Piece of Paper

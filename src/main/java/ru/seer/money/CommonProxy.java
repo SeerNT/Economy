@@ -22,6 +22,13 @@ public class CommonProxy
 	public static Achievement achievementFirstGoodTool;
 	public static Achievement achievementCombatSet;
 	public static Achievement achievementPairOfBows;
+<<<<<<< HEAD
+=======
+	public static Achievement achievementBoom;
+	public static Achievement achievementLuxury;
+	public static Achievement achievementWorth;
+	public static Achievement achievementShopping;
+>>>>>>> Recovery,achievments and other fixes
     public void preInit(FMLPreInitializationEvent event)
     {
 
@@ -45,16 +52,37 @@ public class CommonProxy
   		      -2, 2, new ItemStack(Test.Card), achievementWallet);
       	achievementPrinter =  new Achievement("achievement.printer", "printer", 
     		      -2, -2, Test.Printer,achievementWallet);
+<<<<<<< HEAD
+=======
+      	achievementShopping =  new Achievement("achievement.shop", "shop", 
+  		      -4, -2, Test.Shop,achievementPrinter);
+>>>>>>> Recovery,achievments and other fixes
       	achievementAmethyst =  new Achievement("achievement.amethyst", "amethyst", 
     		      0, 2, Test.AmethystOre,achievementStart);	
       	achievementRuby =  new Achievement("achievement.ruby", "ruby", 
     		      0, 4, Test.RubyOre,achievementAmethyst);
+<<<<<<< HEAD
+=======
+      	achievementLuxury = new Achievement("achievement.luxury", "luxury", 
+  		      0, 6, Test.OpalOre,achievementRuby);
+      	achievementWorth = new Achievement("achievement.worth", "worth", 
+    		      -2, 6, Test.OpalSword,achievementLuxury.setSpecial());
+>>>>>>> Recovery,achievments and other fixes
       	achievementFirstGoodTool =  new Achievement("achievement.firstgoodtool", "goodtool", 
   		      2, 4, Test.RubyPickaxe,achievementRuby.setSpecial());
       	achievementCombatSet =  new Achievement("achievement.combatset", "combatset", 
     		      -2, 4, Test.RubySword,achievementRuby);
       	achievementPairOfBows =  new Achievement("achievement.pairofbows", "pairofbows", 
   		      -4, 4, Test.RubyBow,achievementCombatSet);
+<<<<<<< HEAD
+=======
+      	achievementBoom =  new Achievement("achievement.boom", "boom", 
+    		      -6, 4, Test.Explosive,achievementPairOfBows);
+      	achievementShopping.registerStat();
+      	achievementWorth.registerStat();
+      	achievementLuxury.registerStat();
+      	achievementBoom.registerStat();
+>>>>>>> Recovery,achievments and other fixes
       	achievementPairOfBows.registerStat();
       	achievementCombatSet.registerStat();
       	achievementFirstGoodTool.registerStat();
@@ -70,7 +98,12 @@ public class CommonProxy
     		      new AchievementPage("Economy Beginning", 
     		            new Achievement[] {achievementStart, achievementFirstDollar, achievementFirstPackOfDollars,
     		            		achievementWallet, achievementCard, achievementPrinter, achievementRuby, achievementAmethyst,
+<<<<<<< HEAD
     		            		achievementFirstGoodTool,achievementCombatSet, achievementPairOfBows}));
+=======
+    		            		achievementFirstGoodTool,achievementCombatSet, achievementPairOfBows, achievementBoom,
+    		            		achievementLuxury,achievementWorth,achievementShopping}));
+>>>>>>> Recovery,achievments and other fixes
     }
 
     public void postInit(FMLPostInitializationEvent event) {

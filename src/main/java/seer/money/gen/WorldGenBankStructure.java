@@ -329,6 +329,110 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 9, y, z + 6, b.planks);
         		world.setBlock(x + 9, y, z + 7, b.planks);
         		world.setBlock(x + 9, y, z + 8, b.planks);
+<<<<<<< HEAD
+=======
+        		
+        		//Крыша
+        		world.setBlock(x + 1, y + 6, z, b.planks); 
+        		world.setBlock(x + 1, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 1, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 2, y + 6, z, b.planks); 
+        		world.setBlock(x + 2, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 2, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 3, y + 6, z, b.planks); 
+        		world.setBlock(x + 3, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 3, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 4, y + 6, z, b.planks); 
+        		world.setBlock(x + 4, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 4, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 5, y + 6, z, b.planks); 
+        		world.setBlock(x + 5, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 5, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 6, y + 6, z, b.planks); 
+        		world.setBlock(x + 6, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 6, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 7, y + 6, z, b.planks); 
+        		world.setBlock(x + 7, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 7, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 8, y + 6, z, b.planks); 
+        		world.setBlock(x + 8, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 8, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 9, y + 6, z, b.planks); 
+        		world.setBlock(x + 9, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 9, y + 6, z + 8, b.planks);
+        		
+        		world.setBlock(x + 10, y + 6, z, b.planks); 
+        		world.setBlock(x + 10, y + 6, z + 1, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 2, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 3, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 4, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 5, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 6, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 7, b.planks);
+        		world.setBlock(x + 10, y + 6, z + 8, b.planks);
+>>>>>>> Recovery,achievments and other fixes
             }
         }
 

@@ -1067,9 +1067,12 @@ public class Test implements IRecipe {
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
+<<<<<<< HEAD
        FMLCommonHandler.instance().bus().register(new MoneyEventHandler());
 
 
+=======
+>>>>>>> Recovery,achievments and other fixes
     }
     public static void registerEntity(Class entityClass, String name, int primaryColor, int secondaryColor)
     {

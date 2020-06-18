@@ -6,6 +6,10 @@ import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
+<<<<<<< HEAD
+=======
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+>>>>>>> Recovery,achievments and other fixes
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,6 +21,7 @@ import net.minecraftforge.event.world.BlockEvent.PlaceEvent;
 import seer.money.data.ExtendedPlayer;
 
 public class EventsHandler{
+<<<<<<< HEAD
 	@SubscribeEvent
 	public void onKeyInputEvent(InputEvent.KeyInputEvent event) {
 		System.out.println("Нажато что-то");
@@ -24,15 +29,29 @@ public class EventsHandler{
 			System.out.println("Нажато");
 		}
 	}
+=======
+	public static Boolean sh = false;
+	public boolean opalDone = false;
+	private int luxuryCounter = 0;
+	private boolean sapDone = false;
+
+>>>>>>> Recovery,achievments and other fixes
 	@SubscribeEvent(priority=EventPriority.NORMAL, receiveCanceled=true)
     public void onJoin(EntityJoinWorldEvent e)
     {
 		if (e.entity instanceof EntityPlayer)
 	    {
+<<<<<<< HEAD
 	              ((EntityPlayer) e.entity).addStat(CommonProxy.achievementStart, 1);
 	    }
     }
 	 
+=======
+			
+	              ((EntityPlayer) e.entity).addStat(CommonProxy.achievementStart, 1);
+	    }
+    }
+>>>>>>> Recovery,achievments and other fixes
 	@SubscribeEvent
 	public void onEntityConstructing(EntityConstructing event)
 	{
@@ -74,6 +93,20 @@ public class EventsHandler{
 		if (ev.block == Test.AmethystOre) {
 			ev.getPlayer().addStat(CommonProxy.achievementAmethyst, 1);
 		}
+<<<<<<< HEAD
+=======
+		if(ev.block == Test.OpalOre && opalDone == false) {
+			 luxuryCounter  += 1;
+			 opalDone = true;
+		}
+		if(ev.block == Test.SapphireOre && sapDone == false) {
+			 luxuryCounter  += 1;
+			 sapDone = true;
+		}
+		if(luxuryCounter >= 2) {
+			ev.getPlayer().addStat(CommonProxy.achievementLuxury, 1);
+		}
+>>>>>>> Recovery,achievments and other fixes
 		
     }
 	
