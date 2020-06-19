@@ -15,11 +15,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -29,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import seer.money.rendering.tileentities.Cash_MachineTileEntity;
 import seer.money.rendering.tileentities.PrinterTileEntity;
+import seer.money.rendering.tileentities.safeTileEntity;
 
 public class Cash_Machine extends BlockContainer {
 	private int meta;
@@ -340,7 +343,11 @@ public class Cash_Machine extends BlockContainer {
 
         return j1 | b0;
     }
-
+    public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
+    {
+    	Test.Signalization_Button.onBlockActivated(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_1_.getClosestPlayer(p_149749_2_, p_149749_3_, p_149749_4_, 10), 1, 1, 1, 1);
+        super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
+    }
 
     /**
      * Determines the damage on the item the block drops. Used in cloth and wood.

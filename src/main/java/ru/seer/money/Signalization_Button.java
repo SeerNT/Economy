@@ -44,6 +44,7 @@ public class Signalization_Button extends BlockButton {
 	         this.icons[0] = reg.registerIcon("money:Signalization_Button");
 	 }
 	 public boolean onBlockActivated(World world2, int x, int y, int z, EntityPlayer player2, int par6, float par7, float par8, float par9) {
+		 player2.addStat(CommonProxy.achievementRob, 1);   
 		 if(isPressed == false) {
 			 final EntityPlayer player = player2;
 			 final World world = world2;
