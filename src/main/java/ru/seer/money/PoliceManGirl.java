@@ -41,12 +41,12 @@ public class PoliceManGirl extends EntityMob {
     {
 		this.dropItem(Test.Bat, 1);
     }
-	private int angerLevel;
+	public static int angerLevel;
 	 protected Entity findPlayerToAttack()
 	    {
 	        return this.angerLevel == 0 ? null : super.findPlayerToAttack();
 	    }
-	 private void becomeAngryAt(Entity p_70835_1_)
+	 public void becomeAngryAt(Entity p_70835_1_)
 	    {
 	        this.entityToAttack = p_70835_1_;
 	        this.angerLevel = 400 + this.rand.nextInt(400);
@@ -84,10 +84,18 @@ public class PoliceManGirl extends EntityMob {
             {
                 Entity entity1 = (Entity)list.get(i);
 
-                if (entity1 instanceof EntityPigZombie)
+                if (entity1 instanceof PoliceManGirl && angerLevel > 0)
                 {
                 	PoliceManGirl police = (PoliceManGirl)entity1;
                     police.becomeAngryAt(entity);
+                    PoliceMan policem = new PoliceMan(entity1.worldObj);
+           		 PoliceManGirl policemg = new PoliceManGirl(entity1.worldObj);
+           		 PoliceManGunner policemgg = new PoliceManGunner(entity1.worldObj);
+           		 PoliceManGirlGunner policemggg = new PoliceManGirlGunner(entity1.worldObj);
+                    policem.becomeAngryAt(entity);
+       			 policemg.becomeAngryAt(entity);
+       			 policemgg.becomeAngryAt(entity);
+       			 policemggg.becomeAngryAt(entity);
                 }
             }
 

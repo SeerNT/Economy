@@ -75,15 +75,6 @@ public class ShopTileEntity extends TileEntity implements ISidedInventory {
 			return null;
 		}
 	}
-
-	public void onCreated(Block item, World world, EntityPlayer player) {
-		if(!player.worldObj.isRemote) {
-			if(item.isEqualTo(Test.Shop, item)) {
-				player.addStat(CommonProxy.achievementShopping, 1);
-				player.inventory.addItemStackToInventory(new ItemStack(Test.Dollars, 32));
-			}
-		}
-	}
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		if (this.furnaceItemStacks[slot] != null) {

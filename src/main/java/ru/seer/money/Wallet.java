@@ -96,6 +96,7 @@ public class Wallet extends Item{
     @Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
+    	player.addStat(CommonProxy.achievementWallet, 1);
     		ExtendedPlayer props = ExtendedPlayer.get(player);
     		open  = true;
     		value = props.currentMana;	
@@ -198,50 +199,8 @@ public class Wallet extends Item{
 		
 		props.currentMoney = GuiCashMachine.amount;
 	}
-	/*
 	public void onCreated(ItemStack item, World world, EntityPlayer player) {
-		if(MoneyEventHandler.sh == true) {
-			if(!player.worldObj.isRemote) {
-				if(item.getItem() == Test.Wallet) {
-					int size = item.stackSize;
-					ExtendedPlayer props = ExtendedPlayer.get(player);		
-					if(props.currentMana >= props.maxMana) {
-						((EntityPlayerMP)player).mcServer.getConfigurationManager().sendChatMsg(new ChatComponentText("Full Wallet!"));
-					}else {
-						props.currentMana += size;
-						damage = damage + props.currentMana;
-					}
-					player.addStat(CommonProxy.achievementWallet, 1);
-				}
-			}
-		}else {
-			if(!player.worldObj.isRemote) {
-				if(item.getItem() == Test.Wallet) {
-							ExtendedPlayer props = ExtendedPlayer.get(player);		
-							if(props.currentMana >= props.maxMana) {
-								((EntityPlayerMP)player).mcServer.getConfigurationManager().sendChatMsg(new ChatComponentText("Full Wallet!"));
-							}else {
-								props.currentMana += 1;
-								damage = damage + props.currentMana;
-							}
-							player.addStat(CommonProxy.achievementWallet, 1);
-				}
-			}
-		}
-		item.setItemDamage((int) damage);
+		
 	}
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hx, float hy, float hz) {
-		ExtendedPlayer props = ExtendedPlayer.get(player);
-		// Here we'll use the method we made to see if the player has enough mana to do something
-		// We'll print something to the console for debugging, but I'm sure you'll find a much
-		// better action to perform.
-		value = props.currentMana;
-		if (!world.isRemote) {
-			((EntityPlayerMP)player).mcServer.getConfigurationManager().sendChatMsg(new ChatComponentText("In wallet: "+value + " dollars"));
-            return true;
-        }
-        
-        return false;
-    }
-    */
+	
 }

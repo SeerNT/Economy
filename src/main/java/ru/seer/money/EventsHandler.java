@@ -26,7 +26,13 @@ public class EventsHandler{
 	private int luxuryCounter = 0;
 	private boolean sapDone = false;
 	private boolean readyToRevenge = false;
-	
+	public static boolean isPlayerDead = false;
+	private int printerCounter = 0;
+	private boolean printerDone1 = false;
+	private boolean printerDone2= false;
+	private boolean printerDone3 = false;
+	private boolean printerDone4 = false;
+	private boolean printerDone5 = false;
 
 	@SubscribeEvent(priority=EventPriority.NORMAL, receiveCanceled=true)
     public void onJoin(EntityJoinWorldEvent e)
@@ -61,6 +67,7 @@ public class EventsHandler{
 		    }
 	    }
 		if(e.entity instanceof EntityPlayer) {
+			isPlayerDead = true;
 			if(e.source == Test.bulletDamage1) {
 				readyToRevenge  = true;
 			}
@@ -93,8 +100,62 @@ public class EventsHandler{
 		if (ev.block == Test.PackOfDollars) {
 			ev.player.addStat(CommonProxy.achievementFirstPackOfDollars, 1);
 		}
+		if(ev.block == Test.Shop) {
+			ev.player.addStat(CommonProxy.achievementShopping, 1);
+		}
+		if(ev.block == Test.Cash_Machine) {
+			ev.player.addStat(CommonProxy.achievementCashMachine, 1);
+		}
 		if (ev.block == Test.Printer) {
 			ev.player.addStat(CommonProxy.achievementPrinter, 1);
+			if(printerDone1 == false) {
+				printerCounter += 1;
+				printerDone1 = true;
+			}
+			if(printerCounter >= 5) {
+				ev.player.addStat(CommonProxy.achievementPrinterMan, 1);
+			}
+			
+		}
+		if (ev.block == Test.MegaPrinter) {
+			if(printerDone2 == false) {
+				printerCounter += 1;
+				printerDone2 = true;
+			}
+			if(printerCounter >= 5) {
+				ev.player.addStat(CommonProxy.achievementPrinterMan, 1);
+			}
+			
+		}
+		if (ev.block == Test.UltraPrinter) {
+			if(printerDone3 == false) {
+				printerCounter += 1;
+				printerDone3 = true;
+			}
+			if(printerCounter >= 5) {
+				ev.player.addStat(CommonProxy.achievementPrinterMan, 1);
+			}
+			
+		}
+		if (ev.block == Test.OmegaPrinter) {
+			if(printerDone4 == false) {
+				printerCounter += 1;
+				printerDone4 = true;
+			}
+			if(printerCounter >= 5) {
+				ev.player.addStat(CommonProxy.achievementPrinterMan, 1);
+			}
+			
+		}
+		if (ev.block == Test.MillionPrinter) {
+			if(printerDone5 == false) {
+				printerCounter += 1;
+				printerDone5 = true;
+			}
+			if(printerCounter >= 5) {
+				ev.player.addStat(CommonProxy.achievementPrinterMan, 1);
+			}
+			
 		}
 		
     }

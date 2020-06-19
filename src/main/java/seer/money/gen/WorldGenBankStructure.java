@@ -426,15 +426,15 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 9, y + 6, z + 7, b.planks);
         		world.setBlock(x + 9, y + 6, z + 8, b.planks);
         		
-        		world.setBlock(x + 10, y + 6, z, b.planks); 
-        		world.setBlock(x + 10, y + 6, z + 1, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 2, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 3, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 4, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 5, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 6, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 7, b.planks);
-        		world.setBlock(x + 10, y + 6, z + 8, b.planks);
+        		world.setBlock(x, y + 6, z, b.planks); 
+        		world.setBlock(x, y + 6, z + 1, b.planks);
+        		world.setBlock(x, y + 6, z + 2, b.planks);
+        		world.setBlock(x, y + 6, z + 3, b.planks);
+        		world.setBlock(x, y + 6, z + 4, b.planks);
+        		world.setBlock(x, y + 6, z + 5, b.planks);
+        		world.setBlock(x, y + 6, z + 6, b.planks);
+        		world.setBlock(x, y + 6, z + 7, b.planks);
+        		world.setBlock(x, y + 6, z + 8, b.planks);
             }
         }
 

@@ -41,13 +41,6 @@ public class Cash_MachineTileEntity extends TileEntity implements ISidedInventor
 		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
 	}
 	public static int facing;
-	public void onCreated(Block item, World world, EntityPlayer player) {
-		if(!player.worldObj.isRemote) {
-			if(item.isEqualTo(Test.Cash_Machine, item)) {
-				player.addStat(CommonProxy.achievementCashMachine, 1);
-			}
-		}
-	}
 	@Override
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 	super.readFromNBT(nbttagcompound);

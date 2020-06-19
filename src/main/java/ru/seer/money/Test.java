@@ -392,7 +392,6 @@ public class Test implements IRecipe {
     	GameRegistry.addShapelessRecipe(new ItemStack(Ruby, 9), new Object[] {RubyBlock});
     	GameRegistry.addShapelessRecipe(new ItemStack(RubyBlock, 1), new Object[] {Ruby, Ruby, Ruby, Ruby, Ruby, Ruby, Ruby, Ruby, Ruby,});
     	GameRegistry.addShapelessRecipe(new ItemStack(AmethystBlock, 1), new Object[] {Amethyst, Amethyst, Amethyst, Amethyst, Amethyst, Amethyst, Amethyst, Amethyst, Amethyst,});
-    	GameRegistry.addShapelessRecipe(new ItemStack(Wallet, 1), new Object[] {new ItemStack(Wallet, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Dollars, 64) });
     	GameRegistry.addRecipe(new ItemStack(rubySlab, 6),
 
   			  new Object[]{

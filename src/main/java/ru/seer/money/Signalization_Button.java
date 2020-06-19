@@ -45,24 +45,38 @@ public class Signalization_Button extends BlockButton {
 	 }
 	 public boolean onBlockActivated(World world2, int x, int y, int z, EntityPlayer player2, int par6, float par7, float par8, float par9) {
 		 player2.addStat(CommonProxy.achievementRob, 1);   
+		 PoliceMan policem = new PoliceMan(world2);
+		 PoliceManGirl policemg = new PoliceManGirl(world2);
+		 PoliceManGunner policemgg = new PoliceManGunner(world2);
+		 PoliceManGirlGunner policemggg = new PoliceManGirlGunner(world2);
 		 if(isPressed == false) {
 			 final EntityPlayer player = player2;
-			 final World world = world2;
+			 final World world = world2;  
 			 String coloredText = EnumChatFormatting.RED + "WARNING! INTRUDERS! THE POLICE WILL COME IN A FEW MINUTES";
 			 player.addChatMessage(new ChatComponentText(coloredText));
 			 final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+			 policem.becomeAngryAt(player2);
+   			 policemg.becomeAngryAt(player2);
+   			 policemgg.becomeAngryAt(player2);
+   			 policemggg.becomeAngryAt(player2);
 			    executorService.scheduleAtFixedRate(new Runnable() {
 			        	@Override
 			        	public void run() 
 			        	{
 			        		if(playTimes == 5 || playTimes == 10 || playTimes == 15 || playTimes == 20 || playTimes == 25 || playTimes == 30) {
 			        			isPressed = false;
-			        			
+			        			if(EventsHandler.isPlayerDead == false) {
+			        				player.addStat(CommonProxy.achievementSucRob, 1); 
+			        			}else {
+			        				EventsHandler.isPlayerDead = true;
+			        			}
 			        			myTask();
 			        		}else {
 			        			myTask();
 			        		}
 			        		if(playTimes >= 50) {
+			        			
+			        			  
 			        			executorService.shutdown();
 			        		}
 			        	}

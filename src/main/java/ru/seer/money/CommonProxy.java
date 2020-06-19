@@ -100,7 +100,9 @@ public class CommonProxy
       	achievementCiv.setSpecial();
       	achievementRevenge.setSpecial();
       	achievementRich.setSpecial();
+      	achievementSucRob.setSpecial();
       	achievementCiv.registerStat();
+      	achievementPrinterMan.registerStat();
       	achievementPolice.registerStat();
       	achievementRob.registerStat();
       	achievementSucRob.registerStat();
