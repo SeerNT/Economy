@@ -63,19 +63,19 @@ public class Signalization_Button extends BlockButton {
 			        	@Override
 			        	public void run() 
 			        	{
-			        		if(playTimes == 5 || playTimes == 10 || playTimes == 15 || playTimes == 20 || playTimes == 25 || playTimes == 30) {
+			        		if(playTimes == 5 || playTimes == 10 || playTimes == 15 || playTimes == 20 || playTimes == 25) {
 			        			isPressed = false;
+			        			
+			        			myTask();
+			        		}else {
+			        			myTask();
+			        		}
+			        		if(playTimes >= 20) {
 			        			if(EventsHandler.isPlayerDead == false) {
 			        				player.addStat(CommonProxy.achievementSucRob, 1); 
 			        			}else {
 			        				EventsHandler.isPlayerDead = true;
 			        			}
-			        			myTask();
-			        		}else {
-			        			myTask();
-			        		}
-			        		if(playTimes >= 50) {
-			        			
 			        			  
 			        			executorService.shutdown();
 			        		}
