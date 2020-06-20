@@ -299,7 +299,7 @@ public class GuiShop extends GuiContainer {
 					 Wallet.value = Wallet.value - sumPrice;
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);
 						
-				     double value = props.currentMana;
+				     double value = props.currentMoney;
 				     value = value - sumPrice;
 
 				     isBought = true;

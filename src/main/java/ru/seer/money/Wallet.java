@@ -3,6 +3,7 @@ package ru.seer.money;
 import static net.minecraftforge.common.util.ForgeDirection.DOWN;
 
 import java.util.Iterator;
+import java.util.List;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityOcelot;
@@ -91,15 +92,13 @@ public class Wallet extends Item{
 	public int getMaxItemUseDuration(ItemStack stack) {
 		return 1; // return any value greater than zero
 	}
-
-	
     @Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player)
 	{
     	player.addStat(CommonProxy.achievementWallet, 1);
     		ExtendedPlayer props = ExtendedPlayer.get(player);
     		open  = true;
-    		value = props.currentMana;	
+    		value = props.currentMoney;	
 			iinventory = player.inventory;
 			// If player not sneaking, open the inventory gui
 			if (!player.isSneaking()) {
@@ -196,7 +195,6 @@ public class Wallet extends Item{
 	public void onUpdate(ItemStack p_77663_1_, World p_77663_2_, Entity p_77663_3_, int p_77663_4_, boolean p_77663_5_) {
 		EntityPlayer player = p_77663_2_.getClosestPlayerToEntity(p_77663_3_, 5);
 		ExtendedPlayer props = ExtendedPlayer.get(player);
-		
 		props.currentMoney = GuiCashMachine.amount;
 	}
 	public void onCreated(ItemStack item, World world, EntityPlayer player) {

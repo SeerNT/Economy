@@ -42,15 +42,9 @@ public class ReinforcedDoor extends Block {
      * Gets the block's texture. Args: side, meta
      */
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
-        return this.field_150016_b[0];
-    }
-
-    @SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_)
     {
-        if (p_149673_5_ != 1 && p_149673_5_ != 0)
+    	if (p_149673_5_ != 1 && p_149673_5_ != 0)
         {
             int i1 = this.func_150012_g(p_149673_1_, p_149673_2_, p_149673_3_, p_149673_4_);
             int j1 = i1 & 3;
@@ -314,6 +308,7 @@ public class ReinforcedDoor extends Block {
 
     public void func_150014_a(World p_150014_1_, int p_150014_2_, int p_150014_3_, int p_150014_4_, boolean p_150014_5_)
     {
+    	System.out.println("RED");
         int l = this.func_150012_g(p_150014_1_, p_150014_2_, p_150014_3_, p_150014_4_);
         boolean flag1 = (l & 4) != 0;
 

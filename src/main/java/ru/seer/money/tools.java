@@ -13,7 +13,7 @@ public class tools extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() {
 		// TODO Auto-generated method stub
-		return Item.getItemFromBlock(Test.MegaPrinter);
+		return Item.getItemFromBlock(Test.UltraPrinter);
 	}
 
 }

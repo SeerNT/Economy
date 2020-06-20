@@ -112,9 +112,6 @@ public class ReinforcedDoorItem extends Item {
         p_150924_0_.notifyBlocksOfNeighborChange(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_);
         p_150924_0_.notifyBlocksOfNeighborChange(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_);
     }
-    @Override
-    public void registerIcons(IIconRegister iconRegister) {
-    	itemIcon = iconRegister.registerIcon("money:ReinforcedDoor");
-    }
+    
     
 }
