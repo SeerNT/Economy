@@ -357,9 +357,11 @@ public class safe extends BlockContainer {
                 ++l;
             }
             isDestroyed = false;
+            props.isDestroyed = isDestroyed;
             return l > 1 ? false : (this.func_149952_n(p_149742_1_, p_149742_2_ - 1, p_149742_3_, p_149742_4_) ? false : (this.func_149952_n(p_149742_1_, p_149742_2_ + 1, p_149742_3_, p_149742_4_) ? false : (this.func_149952_n(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_ - 1) ? false : !this.func_149952_n(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_ + 1))));
     	}
     	else if (isDestroyed == false && counter >= 4) {
+    		props.isDestroyed = isDestroyed;
     		return false;
     	}
     	else {
@@ -384,9 +386,10 @@ public class safe extends BlockContainer {
             {
                 ++l;
             }
-
+            props.isDestroyed = isDestroyed;
             return l > 1 ? false : (this.func_149952_n(p_149742_1_, p_149742_2_ - 1, p_149742_3_, p_149742_4_) ? false : (this.func_149952_n(p_149742_1_, p_149742_2_ + 1, p_149742_3_, p_149742_4_) ? false : (this.func_149952_n(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_ - 1) ? false : !this.func_149952_n(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_ + 1))));
     	}
+    	
     }
 
     private boolean func_149952_n(World p_149952_1_, int p_149952_2_, int p_149952_3_, int p_149952_4_)
@@ -412,6 +415,10 @@ public class safe extends BlockContainer {
     public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
     	isDestroyed = true;
+    	counter = 0;
+    	EntityPlayer player = p_149749_1_.getClosestPlayer(p_149749_2_, p_149749_3_, p_149749_4_, 15);
+    	ExtendedPlayer props = ExtendedPlayer.get(player);		
+    	props.isDestroyed = isDestroyed;
     	safeTileEntity tileentitychest = (safeTileEntity)p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
         if (tileentitychest != null)
         {
@@ -460,7 +467,6 @@ public class safe extends BlockContainer {
      */
     public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
-    	p_149727_5_.inventory.setInventorySlotContents(1, new ItemStack(Test.Amethyst));
         if (p_149727_1_.isRemote)
         {
             return true;
@@ -479,7 +485,6 @@ public class safe extends BlockContainer {
             	}else {
             		p_149727_5_.displayGUIChest(iinventory);
             		
-            		iinventory.setInventorySlotContents(0, new ItemStack(Test.Amethyst,30));
             		accessOpen = false;
             	}
             	
