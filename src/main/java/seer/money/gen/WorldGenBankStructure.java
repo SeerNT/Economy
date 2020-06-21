@@ -42,6 +42,56 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x, y, z + 7, b.planks);
         		world.setBlock(x, y, z + 8, b.planks);
         		// Cтенки
+        		world.setBlock(x + 6, y + 1, z, b.planks); 
+        		world.setBlock(x + 6,y + 1, z + 1, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 2, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 3, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 4, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 5, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 6, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 7, b.planks);
+        		world.setBlock(x + 6,y + 1, z + 8, b.planks);
+        		
+        		world.setBlock(x + 6,y + 2, z, b.planks); 
+        		world.setBlock(x + 6,y + 2, z + 1, b.planks);
+        		world.setBlock(x + 6,y + 2, z + 2, Test.ReinforcedGlass);
+        		world.setBlock(x + 6,y + 2, z + 3, Test.ReinforcedGlass);
+        		world.setBlock(x + 6,y + 2, z + 4, b.planks);
+        		world.setBlock(x + 6,y + 2, z + 5, b.planks);
+        		//world.setBlock(x + 6,y + 2, z + 6, b.planks);
+        		//world.setBlock(x + 6,y + 2, z + 7, b.planks);
+        		world.setBlock(x + 6,y + 2, z + 8, b.planks);
+        		
+        		world.setBlock(x + 6,y + 3, z, b.planks); 
+        		world.setBlock(x + 6,y + 3, z + 1, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 2, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 3, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 4, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 5, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 6, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 7, b.planks);
+        		world.setBlock(x + 6,y + 3, z + 8, b.planks);
+        		
+        		world.setBlock(x + 6,y + 4, z, b.planks); 
+        		world.setBlock(x + 6,y + 4, z + 1, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 2, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 3, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 4, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 5, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 6, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 7, b.planks);
+        		world.setBlock(x + 6,y + 4, z + 8, b.planks);
+        		
+        		world.setBlock(x + 6,y + 5, z, b.planks); 
+        		world.setBlock(x + 6,y + 5, z + 1, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 2, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 3, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 4, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 5, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 6, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 7, b.planks);
+        		world.setBlock(x + 6,y + 5, z + 8, b.planks);
+        		
         		world.setBlock(x, y + 1, z, b.planks); 
         		world.setBlock(x, y + 1, z + 1, b.planks);
         		ItemDoor.placeDoorBlock(world, x, y + 1, z + 2,0, b.wooden_door);
@@ -68,7 +118,8 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 9, y + 1, z + 5, b.planks);
         		world.setBlock(x + 9, y + 1, z + 4, b.planks);
         		world.setBlock(x + 9, y + 1, z + 3, b.planks);
-        		world.setBlock(x + 9, y + 1, z + 2, b.planks);
+        		//world.setBlock(x + 9, y + 1, z + 2, );
+        		ItemDoor.placeDoorBlock(world, x + 9, y + 1, z + 2,0, Test.ReinforcedDoor);
         		world.setBlock(x + 9, y + 1, z + 1, b.planks);
         		world.setBlock(x + 9, y + 1, z, b.planks);
         		
@@ -109,7 +160,7 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 9, y + 2, z + 5, b.planks);
         		world.setBlock(x + 9, y + 2, z + 4, b.planks);
         		world.setBlock(x + 9, y + 2, z + 3, b.planks);
-        		world.setBlock(x + 9, y + 2, z + 2, b.planks);
+        		//world.setBlock(x + 9, y + 2, z + 2, b.planks);
         		world.setBlock(x + 9, y + 2, z + 1, b.planks);
         		world.setBlock(x + 9, y + 2, z, b.planks);
         		
@@ -306,23 +357,23 @@ public class WorldGenBankStructure extends WorldGenerator{
         		world.setBlock(x + 6, y, z + 8, b.planks);
         		
         		world.setBlock(x + 7, y, z, b.planks); 
-        		world.setBlock(x + 7, y, z + 1, b.planks);
-        		world.setBlock(x + 7, y, z + 2, b.planks);
-        		world.setBlock(x + 7, y, z + 3, b.planks);
-        		world.setBlock(x + 7, y, z + 4, b.planks);
-        		world.setBlock(x + 7, y, z + 5, b.planks);
-        		world.setBlock(x + 7, y, z + 6, b.planks);
-        		world.setBlock(x + 7, y, z + 7, b.planks);
+        		world.setBlock(x + 7, y, z + 1, Test.ReinforcedBlock);
+        		world.setBlock(x + 7, y, z + 2, Test.ReinforcedBlock);
+        		world.setBlock(x + 7, y, z + 3, Test.ReinforcedBlock);
+        		world.setBlock(x + 7, y, z + 4, Test.ReinforcedBlock);
+        		world.setBlock(x + 7, y, z + 5, Test.ReinforcedBlock);
+        		world.setBlock(x + 7, y, z + 6, Test.ReinforcedBlock);
+        		world.setBlock(x + 7, y, z + 7, Test.ReinforcedBlock);
         		world.setBlock(x + 7, y, z + 8, b.planks);
         		
         		world.setBlock(x + 8, y, z, b.planks); 
-        		world.setBlock(x + 8, y, z + 1, b.planks);
-        		world.setBlock(x + 8, y, z + 2, b.planks);
-        		world.setBlock(x + 8, y, z + 3, b.planks);
-        		world.setBlock(x + 8, y, z + 4, b.planks);
-        		world.setBlock(x + 8, y, z + 5, b.planks);
-        		world.setBlock(x + 8, y, z + 6, b.planks);
-        		world.setBlock(x + 8, y, z + 7, b.planks);
+        		world.setBlock(x + 8, y, z + 1, Test.ReinforcedBlock);
+        		world.setBlock(x + 8, y, z + 2, Test.ReinforcedBlock);
+        		world.setBlock(x + 8, y, z + 3, Test.ReinforcedBlock);
+        		world.setBlock(x + 8, y, z + 4, Test.ReinforcedBlock);
+        		world.setBlock(x + 8, y, z + 5, Test.ReinforcedBlock);
+        		world.setBlock(x + 8, y, z + 6, Test.ReinforcedBlock);
+        		world.setBlock(x + 8, y, z + 7, Test.ReinforcedBlock);
         		world.setBlock(x + 8, y, z + 8, b.planks);
         		
         		world.setBlock(x + 9, y, z, b.planks); 

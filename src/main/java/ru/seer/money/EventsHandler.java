@@ -61,7 +61,10 @@ public class EventsHandler{
 	    {
 			World world = e.entity.worldObj;
 		    EntityPlayer player = world.getClosestPlayerToEntity(e.entity,40);
-		    player.addStat(CommonProxy.achievementPolice, 1);   
+		    if(player != null) {
+		    	player.addStat(CommonProxy.achievementPolice, 1);   
+		    }
+		    
 		    if (readyToRevenge == true) {
 		    	 player.addStat(CommonProxy.achievementRevenge, 1);   
 		    }

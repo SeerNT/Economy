@@ -444,7 +444,6 @@ public class safeTileEntity  extends TileEntity implements IInventory
         if(done == false && ticksSinceSync >= 600) {
         	 
         	try {
-        		System.out.println("DONE!");
         		done = true;
 			} catch (NullPointerException e) {
 				// TODO Auto-generated catch block
