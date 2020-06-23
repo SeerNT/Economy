@@ -23,7 +23,6 @@ import seer.money.guihandlers.GuiCashMachine;
 import seer.money.inventory.ContainerItem;
 
 public class Wallet extends Item{
-	public static double value;
 	public static double damage = 0.0;
 	public static IInventory iinventory;
 	private int counter = 0;
@@ -98,7 +97,6 @@ public class Wallet extends Item{
     	player.addStat(CommonProxy.achievementWallet, 1);
     		ExtendedPlayer props = ExtendedPlayer.get(player);
     		open  = true;
-    		value = props.currentMoney;	
 			iinventory = player.inventory;
 			// If player not sneaking, open the inventory gui
 			if (!player.isSneaking()) {

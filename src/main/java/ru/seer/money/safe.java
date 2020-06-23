@@ -34,6 +34,8 @@ public class safe extends BlockContainer {
 	private final Random field_149955_b = new Random();
 	public final int field_149956_a;
 	private int counter = 1;
+	public static IInventory iinventory;
+	public static boolean isOpened = false;
 	public static int meta;
 	public static boolean accessOpen = false;
 	public static int[] password = new int[4];
@@ -42,7 +44,7 @@ public class safe extends BlockContainer {
 		super(Material.wood);
 		this.field_149956_a = p_i45397_1_;
 		this.setBlockName("safe");
-		this.setCreativeTab(Test.tabTutorial);
+		this.setCreativeTab(Test.tools);
 		this.setHardness(-1F);
 		this.setResistance(20F);
 		this.setHarvestLevel("pickaxe",3);
@@ -415,6 +417,7 @@ public class safe extends BlockContainer {
     public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
     	isDestroyed = true;
+    	isOpened = false;
     	counter = 0;
     	EntityPlayer player = p_149749_1_.getClosestPlayer(p_149749_2_, p_149749_3_, p_149749_4_, 15);
     	ExtendedPlayer props = ExtendedPlayer.get(player);		
@@ -476,15 +479,15 @@ public class safe extends BlockContainer {
         	ExtendedPlayer props = ExtendedPlayer.get(p_149727_5_);
         	
         	password = props.currentPassword;
-            IInventory iinventory = this.func_149951_m(p_149727_1_, p_149727_2_, p_149727_3_, p_149727_4_);
+            iinventory = this.func_149951_m(p_149727_1_, p_149727_2_, p_149727_3_, p_149727_4_);
 
             if (iinventory != null)
             {	
             	if (accessOpen == false) {
             		Minecraft.getMinecraft().displayGuiScreen(new GuiSafe());
             	}else {
+            		isOpened = true;
             		p_149727_5_.displayGUIChest(iinventory);
-            		
             		accessOpen = false;
             	}
             	

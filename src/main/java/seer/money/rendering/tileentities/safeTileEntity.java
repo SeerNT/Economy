@@ -70,7 +70,7 @@ public class safeTileEntity  extends TileEntity implements IInventory
      */
     public int getSizeInventory()
     {
-        return 27;
+        return 28;
     }
 
     /**
