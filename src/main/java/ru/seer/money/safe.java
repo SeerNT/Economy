@@ -51,14 +51,17 @@ public class safe extends BlockContainer {
 		this.setBlockTextureName("money:safeIcon");
 	}
     
-
-
+	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
+		iinventory = this.func_149951_m(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
+		System.out.println(iinventory);
+	}
     /**
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
      */
     public boolean isOpaqueCube()
     {
+    	
         return false;
     }
 

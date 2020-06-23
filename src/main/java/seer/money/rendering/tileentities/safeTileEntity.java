@@ -359,7 +359,7 @@ public class safeTileEntity  extends TileEntity implements IInventory
         float f = 5.0F;
         EntityPlayer player = worldObj.getClosestPlayer(this.xCoord, this.yCoord, this.zCoord, 5);
         ++this.ticksSinceSync;
-
+        
         if (!this.worldObj.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + this.xCoord + this.yCoord + this.zCoord) % 200 == 0)
         {
             this.numPlayersUsing = 0;

@@ -29,6 +29,7 @@ public class ShopTileEntity extends TileEntity implements ISidedInventory {
 	public int currentBurnTime;
 	public int furnaceCookTime;
 	private String printerName;
+	
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		// TODO Auto-generated method stub
 		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;

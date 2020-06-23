@@ -1609,42 +1609,54 @@ public class GuiShop extends GuiContainer {
 	 {
 		 if(B.id == 1)
 		 {
-			 //if item_amount == null then item == null hehe
-			 putItemInSlot(new ItemStack(Test.Amethyst,item1_type_amount),new ItemStack(Test.Amethyst,item2_type_amount),new ItemStack(Test.Amethyst,item3_type_amount),new ItemStack(Test.Amethyst,item4_type_amount),new ItemStack(Test.Amethyst,item5_type_amount),new ItemStack(Test.Amethyst,item6_type_amount),new ItemStack(Test.Amethyst,item7_type_amount),new ItemStack(Test.Amethyst,item8_type_amount));
-			 isItem1FoundSlot = false;
-			 isItem2FoundSlot = false;
-			 isItem3FoundSlot = false;
-			 isItem4FoundSlot = false;
-			 isItem5FoundSlot = false;
-			 isItem6FoundSlot = false;
-			 isItem7FoundSlot = false;
-			 isItem8FoundSlot = false;
-			 
-			 float f = this.field_149955_b.nextFloat() * 0.8F + 0.1F;
-             float f1 = this.field_149955_b.nextFloat() * 0.8F + 0.1F;
-             // Not enough money -> dont give money
-             
-			 if (amount < sumOfSumPrice) {
-				 sumPriceStr = "NOT ENOUGH";
+			 if(safe.iinventory == null) {
+				 sumPriceStr = "NO SAFE";
 				 int centeredX = this.width / 2 - 35 / 2;
 				 int centeredY = this.height / 2 - 19 / 2;
-				 String colorText = EnumChatFormatting.RED + "Apply";
+				 String colorText = EnumChatFormatting.RED + sumPriceStr;
 				 this.buttonList.add(new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText));
 				 this.updateScreen();
-				 isBought = false;
-				 
 			 }else {
-					 ExtendedPlayer props = ExtendedPlayer.get(pla);
-				     double value = props.currentMoney;
-				     value = value - sumOfSumPrice;
-				     round(value,2);
-				     props.currentMoney = value;
-				     isBought = true;
-				 this.updateScreen();
-				
+				 safe.iinventory.openInventory();
+				 //if item_amount == null then item == null hehe
+				 
+				 isItem1FoundSlot = false;
+				 isItem2FoundSlot = false;
+				 isItem3FoundSlot = false;
+				 isItem4FoundSlot = false;
+				 isItem5FoundSlot = false;
+				 isItem6FoundSlot = false;
+				 isItem7FoundSlot = false;
+				 isItem8FoundSlot = false;
+				 
+				 float f = this.field_149955_b.nextFloat() * 0.8F + 0.1F;
+	             float f1 = this.field_149955_b.nextFloat() * 0.8F + 0.1F;
+	             // Not enough money -> dont give money
+	             sumOfSumPrice = sumPrice + sumPrice2 + sumPrice3 + sumPrice4 + sumPrice5 + sumPrice6 + sumPrice7 + sumPrice8;
+				 if (amount < sumOfSumPrice) {
+					 sumPriceStr = "NOT ENOUGH";
+					 int centeredX = this.width / 2 - 35 / 2;
+					 int centeredY = this.height / 2 - 19 / 2;
+					 String colorText = EnumChatFormatting.RED + sumPriceStr;
+					 this.buttonList.add(new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText));
+					 this.updateScreen();
+					 isBought = false;
+					 
+				 }else {
+					 putItemInSlot(new ItemStack(Test.Amethyst,item1_type_amount),new ItemStack(Test.Amethyst,item2_type_amount),new ItemStack(Test.Amethyst,item3_type_amount),new ItemStack(Test.Amethyst,item4_type_amount),new ItemStack(Test.Amethyst,item5_type_amount),new ItemStack(Test.Amethyst,item6_type_amount),new ItemStack(Test.Amethyst,item7_type_amount),new ItemStack(Test.Amethyst,item8_type_amount));
+						 ExtendedPlayer props = ExtendedPlayer.get(pla);
+					     amount = props.currentMoney;
+					     amount = amount - sumOfSumPrice;
+					     round(amount,2);
+					     props.currentMoney = amount;
+					     isBought = true;
+					 this.updateScreen();
+					
+				 }
+				 safe.iinventory.closeInventory();
+		    	 this.updateScreen();
 			 }
 			 
-	    	 this.updateScreen();
 		 }
 		 if(B.id == 2) 
 		 {
@@ -1986,8 +1998,16 @@ public class GuiShop extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int par1, int par2){
 		mc.getTextureManager().bindTexture(bookPageTextures[1]);
 		sumPrice = round(sumPrice,2);
+		sumPrice2 = round(sumPrice2,2);
+		sumPrice3 = round(sumPrice3,2);
+		sumPrice4 = round(sumPrice4,2);
+		sumPrice5 = round(sumPrice5,2);
+		sumPrice6 = round(sumPrice6,2);
+		sumPrice7 = round(sumPrice7,2);
+		sumPrice8 = round(sumPrice8,2);
 		sumOfSumPrice = sumPrice + sumPrice2 + sumPrice3 + sumPrice4 + sumPrice5 + sumPrice6 + sumPrice7 + sumPrice8;
 		sumOfSumPrice = round(sumOfSumPrice,2);
+		amount = round(amount,2);
 	    amountStr = Double.toString(amount);
 	    sumPriceStr = Double.toString(sumOfSumPrice);
 	    this.fontRendererObj.drawString("Balance", 6, this.ySize - 145, 4210752);
