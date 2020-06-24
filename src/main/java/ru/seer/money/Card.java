@@ -26,6 +26,7 @@ public class Card extends Item {
 	{
 		ExtendedPlayer props = ExtendedPlayer.get(par2EntityPlayer);
 		value = props.currentMoney;	
+		value = Math.round(value * 10) / 10.0;
 		valueStr = Double.toString(value);
 		par2List.add("\u00a7a" + valueStr);
 	}
@@ -35,9 +36,9 @@ public class Card extends Item {
 		}
 	}
 	public void onUpdate(ItemStack item, World world, Entity player, int p_77663_4_, boolean p_77663_5_) {
-		System.out.println(GuiShop.amount);
 		ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer) player);	
-		value = props.currentMoney;
+		value = Math.round(value * 10) / 10.0;
+		props.currentMoney = value;
 		valueStr = Double.toString(value);
 	    if(props.currentMoney >= 10000) {
 	    	((EntityPlayer) player).addStat(CommonProxy.achievementRich, 1);

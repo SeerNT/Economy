@@ -19,6 +19,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import ru.seer.money.Card;
 import ru.seer.money.Cents;
 import ru.seer.money.Dollars;
 import ru.seer.money.Shop;
@@ -422,6 +423,7 @@ public class GuiCashMachine extends GuiContainer {
 					 ExtendedPlayer props = ExtendedPlayer.get(pla);	
 					 if(ContainerCashMachine.slot4.inventory.getStackInSlot(0).getItem() == Test.Wallet && ContainerCashMachine.slot5.inventory.getStackInSlot(1).getItem() == Test.Card ) {	
 						 props.currentMoney += getFinalBalance();
+						 Card.value += getFinalBalance();
 						 finalBalance = 0.0;
 						 opened = true;
 						 Wallet.adelete = false;

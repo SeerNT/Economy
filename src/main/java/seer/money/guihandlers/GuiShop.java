@@ -25,6 +25,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import ru.seer.money.Card;
 import ru.seer.money.Shop;
 import ru.seer.money.ShopTileEntity;
 import ru.seer.money.Test;
@@ -175,7 +176,7 @@ public class GuiShop extends GuiContainer {
 		sumPriceStr = "0.0";
 		this.inventoryRows = invPlayer.getSizeInventory() / 9;
 		stringPageText8[0]="x0";
-	    amount = props.currentMoney;
+	    amount = Card.value;
 		wor = world;
 		pla = player;
 		x2 = x;
@@ -242,14 +243,6 @@ public class GuiShop extends GuiContainer {
 		
 		return true;
 	}
-	public static double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
-
-	    long factor = (long) Math.pow(10, places);
-	    value = value * factor;
-	    long tmp = Math.round(value);
-	    return (double) tmp / factor;
-	}
 	 @Override
 	 public void initGui()
 	 {
@@ -287,6 +280,7 @@ public class GuiShop extends GuiContainer {
 	    @Override
 	    public void onGuiClosed() 
 	    {
+	    	Card.value = amount;
 	 	   ContainerShopCustom.isCreated = false;
 	    }
 	 public boolean isAllSlotsInSafeAreNotNull() {
@@ -1584,9 +1578,11 @@ public class GuiShop extends GuiContainer {
 	 {
 		 if(B.id == 1)
 		 {
+			 /*
 			 ExtendedPlayer props = ExtendedPlayer.get(pla);
 			 props.currentMoney = amount;
-			 if(safe.iinventory == null && safe.isOpened == false) {
+			 */
+			 if(safe.iinventory == null || safe.isOpened == false) {
 				 sumPriceStr = "NO SAFE";
 				 int centeredX = this.width / 2 - 35 / 2;
 				 int centeredY = this.height / 2 - 19 / 2;
@@ -1652,9 +1648,10 @@ public class GuiShop extends GuiContainer {
 					 }
 					 putItemInSlot(item1,item2,item3,item4,item5,item6, item7, item8);
 					 amount = amount - sumOfSumPrice;
+					 amount = Math.round(amount * 10) / 10.0;
+					 Card.value = amount;
 					 
-				    	sumOfSumPrice = 0;
-					     isBought = true;
+					 isBought = true;
 					     
 					     
 					 this.updateScreen();
@@ -2004,21 +2001,21 @@ public class GuiShop extends GuiContainer {
     
 	protected void drawGuiContainerForegroundLayer(int par1, int par2){
 		mc.getTextureManager().bindTexture(bookPageTextures[1]);
-		 ExtendedPlayer props = ExtendedPlayer.get(pla);
-		 round(amount,2);
-	     props.currentMoney = amount;
-		sumPrice = round(sumPrice,2);
-		sumPrice2 = round(sumPrice2,2);
-		sumPrice3 = round(sumPrice3,2);
-		sumPrice4 = round(sumPrice4,2);
-		sumPrice5 = round(sumPrice5,2);
-		sumPrice6 = round(sumPrice6,2);
-		sumPrice7 = round(sumPrice7,2);
-		sumPrice8 = round(sumPrice8,2);
+		sumPrice = Math.round(sumPrice * 10) / 10.0;
+		sumPrice2 = Math.round(sumPrice2 * 10) / 10.0;
+		sumPrice3 = Math.round(sumPrice3 * 10) / 10.0;
+		sumPrice4 = Math.round(sumPrice4 * 10) / 10.0;
+		sumPrice5 = Math.round(sumPrice5 * 10) / 10.0;
+		sumPrice6 = Math.round(sumPrice6 * 10) / 10.0;
+		sumPrice7 = Math.round(sumPrice7 * 10) / 10.0;
+		sumPrice8 = Math.round(sumPrice8 * 10) / 10.0;
+		amount = Math.round(amount * 10) / 10.0;
 		sumOfSumPrice = sumPrice + sumPrice2 + sumPrice3 + sumPrice4 + sumPrice5 + sumPrice6 + sumPrice7 + sumPrice8;
-		sumOfSumPrice = round(sumOfSumPrice,2);
+		sumOfSumPrice = Math.round(sumOfSumPrice * 10) / 10.0;
+		Card.value = amount;
 	    amountStr = Double.toString(amount);
 	    sumPriceStr = Double.toString(sumOfSumPrice);
+	    sumOfSumPrice = 0;
 	    this.fontRendererObj.drawString("Balance", 6, this.ySize - 145, 4210752);
 		this.fontRendererObj.drawString(amountStr, 7, this.ySize - 153, 4210752);
 		this.fontRendererObj.drawString("Price", 6, this.ySize - 110, 4210752);

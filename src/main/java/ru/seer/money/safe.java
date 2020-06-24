@@ -490,8 +490,8 @@ public class safe extends BlockContainer {
             	if (accessOpen == false) {
             		Minecraft.getMinecraft().displayGuiScreen(new GuiSafe());
             	}else {
-            		isOpened = true;
             		p_149727_5_.displayGUIChest(iinventory);
+            		isOpened = true;
             		accessOpen = false;
             	}
             	
