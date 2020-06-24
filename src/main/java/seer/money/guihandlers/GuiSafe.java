@@ -123,13 +123,11 @@ public class GuiSafe extends GuiScreen {
     public void drawScreen(int parWidth, int parHeight, float p_73863_3_)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        if (currPage == 0)
-     {
-         mc.getTextureManager().bindTexture(bookPageTextures[1]);
-     }
-        else
-        {
-         mc.getTextureManager().bindTexture(bookPageTextures[1]);
+        try {
+        	mc.getTextureManager().bindTexture(bookPageTextures[1]);
+        }
+        catch(NullPointerException ex) {
+        	ex.printStackTrace();
         }
         int offsetFromScreenLeft = (width - bookImageWidth ) / 2;
         drawTexturedModalRect(offsetFromScreenLeft, 2, 0, 0, bookImageWidth, 
