@@ -101,7 +101,7 @@ public class GuiShop extends GuiContainer {
     private int pageNumber6 = 0;
     private int pageNumber7 = 0;
     private int pageNumber8 = 0;
-    private static double item1_price = 9.2;
+    private static double item1_price = 0.0;
 	private static double item2_price = 0.0;
 	private static double item3_price = 0.0;
 	private static double item4_price = 0.0;
@@ -110,7 +110,7 @@ public class GuiShop extends GuiContainer {
 	private static double item7_price = 0.0;
 	private static double item8_price = 0.0;
 	private Boolean isEnough = true;
-	private double amount;
+	public static double amount;
 	public String amountStr;
 	static double sumPrice = 0;
 	static double sumPrice2 = 0;
@@ -139,6 +139,7 @@ public class GuiShop extends GuiContainer {
 		super(new ContainerShop(invPlayer, tile, player));
 		bookPageTextures[1] = new ResourceLocation(
         		"money:textures/gui/book.png");
+		ExtendedPlayer props = ExtendedPlayer.get(player);
 		stringPageText[0]="x0";
 		stringPageText2[0]="x0";
 		stringPageText3[0]="x0";
@@ -146,9 +147,34 @@ public class GuiShop extends GuiContainer {
 		stringPageText5[0]="x0";
 		stringPageText6[0]="x0";
 		stringPageText7[0]="x0";
+		item1_price = 0.0;
+    	item2_price = 0.0;
+    	item3_price = 0.0;
+    	item4_price = 0.0;
+    	item5_price = 0.0;
+    	item6_price = 0.0;
+    	item7_price = 0.0;
+    	item8_price = 0.0;
+    	item1_type_amount = 0;
+    	item2_type_amount = 0;
+    	item3_type_amount = 0;
+    	item4_type_amount = 0;
+    	item5_type_amount = 0;
+    	item6_type_amount = 0;
+    	item7_type_amount = 0;
+    	item8_type_amount = 0;
+		sumPrice = 0.0;
+		sumPrice2 = 0.0;
+		sumPrice3 = 0.0;
+		sumPrice4 = 0.0;
+		sumPrice5 = 0.0;
+		sumPrice6 = 0.0;
+		sumPrice7 = 0.0;
+		sumPrice8 = 0.0;
+		sumOfSumPrice = 0.0;
+		sumPriceStr = "0.0";
 		this.inventoryRows = invPlayer.getSizeInventory() / 9;
 		stringPageText8[0]="x0";
-	    ExtendedPlayer props = ExtendedPlayer.get(player);	
 	    amount = props.currentMoney;
 		wor = world;
 		pla = player;
@@ -227,8 +253,6 @@ public class GuiShop extends GuiContainer {
 	 @Override
 	 public void initGui()
 	 {
-		 
-		 sumPrice = 0.0;
 		 int centeredX = this.width / 2 - 35 / 2;
 		 int centeredY = this.height / 2 - 19 / 2;
 		 super.initGui();
@@ -259,59 +283,10 @@ public class GuiShop extends GuiContainer {
 	     * Called when the screen is unloaded. Used to disable keyboard repeat 
 	     * events
 	     */
+	 	
 	    @Override
 	    public void onGuiClosed() 
 	    {
-	    	//ContainerShop.slot3.inventory.setInventorySlotContents(0, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(1, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(2, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(3, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(4, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(5, null);
-			item1_price = 0.0;
-	    	item2_price = 0.0;
-	    	item3_price = 0.0;
-	    	item4_price = 0.0;
-	    	item5_price = 0.0;
-	    	item6_price = 0.0;
-	    	item7_price = 0.0;
-	    	item8_price = 0.0;
-	    	item1_type_amount = 0;
-	    	item2_type_amount = 0;
-	    	item3_type_amount = 0;
-	    	item4_type_amount = 0;
-	    	item5_type_amount = 0;
-	    	item6_type_amount = 0;
-	    	item7_type_amount = 0;
-	    	item8_type_amount = 0;
-			sumPrice = 0.0;
-			sumPrice2 = 0.0;
-			sumPrice3 = 0.0;
-			sumPrice4 = 0.0;
-			sumPrice5 = 0.0;
-			sumPrice6 = 0.0;
-			sumPrice7 = 0.0;
-			sumPrice8 = 0.0;
-			sumOfSumPrice = 0.0;
-			sumPriceStr = "0.0";
-			ContainerShop.isSlotNull1 = true;
-			ContainerShop.isSlotNull2 = true;
-			ContainerShop.isSlotNull3 = true;
-			ContainerShop.isSlotNull4 = true;
-			ContainerShop.isSlotNull5 = true;
-			ContainerShop.isSlotNull6 = true;
-			GuiShopCustom.item1 = null;
-			GuiShopCustom.item1IsNull = true;
-			GuiShopCustom.item2 = null;
-			GuiShopCustom.item2IsNull = true;
-			GuiShopCustom.item3 = null;
-	 		GuiShopCustom.item3IsNull = true;
-	 		GuiShopCustom.item4 = null;
-	 		GuiShopCustom.item4IsNull = true;
-	 		GuiShopCustom.item5 = null;
-	 		GuiShopCustom.item5IsNull = true;
-	 		GuiShopCustom.item6 = null;
-	 		GuiShopCustom.item6IsNull = true;
 	 	   ContainerShopCustom.isCreated = false;
 	    }
 	 public boolean isAllSlotsInSafeAreNotNull() {
@@ -1609,7 +1584,9 @@ public class GuiShop extends GuiContainer {
 	 {
 		 if(B.id == 1)
 		 {
-			 if(safe.iinventory == null) {
+			 ExtendedPlayer props = ExtendedPlayer.get(pla);
+			 props.currentMoney = amount;
+			 if(safe.iinventory == null && safe.isOpened == false) {
 				 sumPriceStr = "NO SAFE";
 				 int centeredX = this.width / 2 - 35 / 2;
 				 int centeredY = this.height / 2 - 19 / 2;
@@ -1618,8 +1595,6 @@ public class GuiShop extends GuiContainer {
 				 this.updateScreen();
 			 }else {
 				 safe.iinventory.openInventory();
-				 //if item_amount == null then item == null hehe
-				 
 				 isItem1FoundSlot = false;
 				 isItem2FoundSlot = false;
 				 isItem3FoundSlot = false;
@@ -1643,20 +1618,51 @@ public class GuiShop extends GuiContainer {
 					 isBought = false;
 					 
 				 }else {
-					 putItemInSlot(new ItemStack(Test.Amethyst,item1_type_amount),new ItemStack(Test.Amethyst,item2_type_amount),new ItemStack(Test.Amethyst,item3_type_amount),new ItemStack(Test.Amethyst,item4_type_amount),new ItemStack(Test.Amethyst,item5_type_amount),new ItemStack(Test.Amethyst,item6_type_amount),new ItemStack(Test.Amethyst,item7_type_amount),new ItemStack(Test.Amethyst,item8_type_amount));
-						 ExtendedPlayer props = ExtendedPlayer.get(pla);
-					     amount = props.currentMoney;
-					     amount = amount - sumOfSumPrice;
-					     round(amount,2);
-					     props.currentMoney = amount;
+					 ItemStack item1 = new ItemStack(Test.Amethyst, item1_type_amount);
+					 ItemStack item2 = new ItemStack(Test.Amethyst, item2_type_amount);
+					 ItemStack item3 = new ItemStack(Test.Amethyst, item3_type_amount);
+					 ItemStack item4 = new ItemStack(Test.Amethyst, item4_type_amount);
+					 ItemStack item5 = new ItemStack(Test.Amethyst, item5_type_amount);
+					 ItemStack item6 = new ItemStack(Test.Amethyst, item6_type_amount);
+					 ItemStack item7 = new ItemStack(Test.Amethyst, item7_type_amount);
+					 ItemStack item8 = new ItemStack(Test.Amethyst, item8_type_amount);
+					 if(item1_type_amount == 0) {
+						 item1 = null;
+					 }
+					 if(item2_type_amount == 0) {
+						 item2 = null;
+					 }
+					 if(item3_type_amount == 0) {
+						 item3 = null;
+					 }
+					 if(item4_type_amount == 0) {
+						 item4 = null;
+					 }
+					 if(item5_type_amount == 0) {
+						 item5 = null;
+					 }
+					 if(item6_type_amount == 0) {
+						 item6 = null;
+					 }
+					 if(item7_type_amount == 0) {
+						 item7 = null;
+					 }
+					 if(item8_type_amount == 0) {
+						 item8 = null;
+					 }
+					 putItemInSlot(item1,item2,item3,item4,item5,item6, item7, item8);
+					 amount = amount - sumOfSumPrice;
+					 
+				    	sumOfSumPrice = 0;
 					     isBought = true;
+					     
+					     
 					 this.updateScreen();
 					
 				 }
 				 safe.iinventory.closeInventory();
 		    	 this.updateScreen();
 			 }
-			 
 		 }
 		 if(B.id == 2) 
 		 {
@@ -1685,8 +1691,9 @@ public class GuiShop extends GuiContainer {
 	 		GuiShopCustom.item5IsNull = true;
 	 		GuiShopCustom.item6 = null;
 	 		GuiShopCustom.item6IsNull = true;
-			changeGui(wor,x2,y2,z2,pla);
+			
 			*/
+			changeGui(wor,x2,y2,z2,pla);
 		 }
 		 // First ButtonCollection
 		 if (B == buttonUp3)
@@ -1997,6 +2004,9 @@ public class GuiShop extends GuiContainer {
     
 	protected void drawGuiContainerForegroundLayer(int par1, int par2){
 		mc.getTextureManager().bindTexture(bookPageTextures[1]);
+		 ExtendedPlayer props = ExtendedPlayer.get(pla);
+		 round(amount,2);
+	     props.currentMoney = amount;
 		sumPrice = round(sumPrice,2);
 		sumPrice2 = round(sumPrice2,2);
 		sumPrice3 = round(sumPrice3,2);
@@ -2007,7 +2017,6 @@ public class GuiShop extends GuiContainer {
 		sumPrice8 = round(sumPrice8,2);
 		sumOfSumPrice = sumPrice + sumPrice2 + sumPrice3 + sumPrice4 + sumPrice5 + sumPrice6 + sumPrice7 + sumPrice8;
 		sumOfSumPrice = round(sumOfSumPrice,2);
-		amount = round(amount,2);
 	    amountStr = Double.toString(amount);
 	    sumPriceStr = Double.toString(sumOfSumPrice);
 	    this.fontRendererObj.drawString("Balance", 6, this.ySize - 145, 4210752);

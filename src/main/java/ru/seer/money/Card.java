@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import seer.money.data.ExtendedPlayer;
+import seer.money.guihandlers.GuiShop;
 
 public class Card extends Item {
 	private String valueStr;
@@ -34,6 +35,7 @@ public class Card extends Item {
 		}
 	}
 	public void onUpdate(ItemStack item, World world, Entity player, int p_77663_4_, boolean p_77663_5_) {
+		System.out.println(GuiShop.amount);
 		ExtendedPlayer props = ExtendedPlayer.get((EntityPlayer) player);	
 		value = props.currentMoney;
 		valueStr = Double.toString(value);

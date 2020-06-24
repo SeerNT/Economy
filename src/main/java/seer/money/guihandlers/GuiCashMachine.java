@@ -207,15 +207,6 @@ public class GuiCashMachine extends GuiContainer {
         }
     }
 	public boolean changeGui(World world, int x, int y, int z, EntityPlayer player) {
-		/*
-		if (che == false) {
-			player.openGui(Test.instance, 2, world, x, y, z);
-		}else {
-			player.openGui(Test.instance, 1, world, x, y, z);
-			che = false;
-			ContainerShop.isClear = false;
-		}
-		*/
 		return true;
 	}
 	public static double round(double value, int places) {
@@ -268,42 +259,7 @@ public class GuiCashMachine extends GuiContainer {
 	    @Override
 	    public void onGuiClosed() 
 	    {
-	    	//ContainerShop.slot3.inventory.setInventorySlotContents(0, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(1, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(2, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(3, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(4, null);
-			//ContainerShop.slot3.inventory.setInventorySlotContents(5, null);
-	    	/*
-			item1_price = 0.0;
-	    	item2_price = 0.0;
-	    	item3_price = 0.0;
-	    	item4_price = 0.0;
-	    	item5_price = 0.0;
-	    	item6_price = 0.0;
-	    	item1_type_amount = 0;
-			sumPrice = 0.0;
-			sumPriceStr = "0.0";
-			ContainerShop.isSlotNull1 = true;
-			ContainerShop.isSlotNull2 = true;
-			ContainerShop.isSlotNull3 = true;
-			ContainerShop.isSlotNull4 = true;
-			ContainerShop.isSlotNull5 = true;
-			ContainerShop.isSlotNull6 = true;
-			GuiShopCustom.item1 = null;
-			GuiShopCustom.item1IsNull = true;
-			GuiShopCustom.item2 = null;
-			GuiShopCustom.item2IsNull = true;
-			GuiShopCustom.item3 = null;
-	 		GuiShopCustom.item3IsNull = true;
-	 		GuiShopCustom.item4 = null;
-	 		GuiShopCustom.item4IsNull = true;
-	 		GuiShopCustom.item5 = null;
-	 		GuiShopCustom.item5IsNull = true;
-	 		GuiShopCustom.item6 = null;
-	 		GuiShopCustom.item6IsNull = true;
-	 	   ContainerShopCustom.isCreated = false;
-	 	   */
+	    	
 	    }
 	 public double getFinalBalance() {
 		 finalBalance = 0.0;

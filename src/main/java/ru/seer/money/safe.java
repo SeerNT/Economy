@@ -50,7 +50,8 @@ public class safe extends BlockContainer {
 		this.setHarvestLevel("pickaxe",3);
 		this.setBlockTextureName("money:safeIcon");
 	}
-    
+	
+    @Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
 		iinventory = this.func_149951_m(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
 		System.out.println(iinventory);
