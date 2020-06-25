@@ -124,6 +124,10 @@ public class GuiShop extends GuiContainer {
 	static double sumOfSumPrice;
 	public Boolean che = false;
 	private int inventoryRows;
+	private GuiButton buttonApply;
+	private GuiButton buttonApllyNE;
+	private GuiButton buttonApplyNS;
+	private GuiButton buttonApplyNM;
 	public static boolean isBought = false;
 	public static boolean done = false;
 	public static boolean isItem1FoundSlot = false;
@@ -251,8 +255,17 @@ public class GuiShop extends GuiContainer {
 		 super.initGui();
 		 // 131
 		 // 88
-		 String colorText = EnumChatFormatting.RED + "Apply";
-		 this.buttonList.add(new GuiButton( 1, centeredX - 64, centeredY - 10, 35, 18, "Apply"));
+		 String colorText = EnumChatFormatting.RED + "NO SPACE";
+		 String colorText2 = EnumChatFormatting.RED + "NOT ENOUGH";
+		 String colorText3 = EnumChatFormatting.RED + "NO SAFE";
+		 this.buttonList.add(buttonApplyNS = new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText3));
+		 this.buttonList.add(buttonApplyNM = new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText2));
+		 this.buttonList.add(buttonApllyNE = new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText));
+		 this.buttonList.add(buttonApply = new GuiButton( 1, centeredX - 64, centeredY - 10, 35, 18, "Apply"));
+		 buttonApllyNE.visible = false;
+		 buttonApply.visible = true;
+		 buttonApplyNS.visible = false;
+		 buttonApplyNM.visible = false;
 		 this.buttonList.add(new GuiButton( 2, centeredX + 64, centeredY - 10, 35, 18, "Open..."));
 		 this.buttonList.add(buttonUp= new NextPageButton(3, centeredX + 28, centeredY - 60, true));
 		 this.buttonList.add(buttonUp2= new NextPageButton(4, centeredX + 28, centeredY - 72, false));
@@ -302,20 +315,89 @@ public class GuiShop extends GuiContainer {
 	 }
 	 public boolean putItemInSlot(ItemStack item1, ItemStack item2, ItemStack item3, ItemStack item4, ItemStack item5, ItemStack item6, ItemStack item7, ItemStack item8) {
 		 if(isAllSlotsInSafeAreNotNull() == true) {
-			 sumPriceStr = "NOT ENOUGH";
 			 int centeredX = this.width / 2 - 35 / 2;
 			 int centeredY = this.height / 2 - 19 / 2;
-			 String colorText = EnumChatFormatting.RED + "Apply";
-			 this.buttonList.add(new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText));
+			 buttonApllyNE.visible = true;
+			 buttonApply.visible = false;
+			 buttonApplyNS.visible = false;
+			 buttonApplyNM.visible = false;
 			 return false;
 		 }else {
 			 if(safe.isOpened == false) {
 				 return false;
 			 }else {
+				 if (item1 == null) {
+					 isItem1FoundSlot = true;
+				 }
+				 if (item2 == null) {
+					 isItem2FoundSlot = true;
+				 }
+				 if (item3 == null) {
+					 isItem3FoundSlot = true;
+				 }
+				 if (item4 == null) {
+					 isItem4FoundSlot = true;
+				 }
+				 if (item5 == null) {
+					 isItem5FoundSlot = true;
+				 }
+				 if (item6 == null) {
+					 isItem6FoundSlot = true;
+				 }
+				 if (item7 == null) {
+					 isItem7FoundSlot = true;
+				 }
+				 if (item8 == null) {
+					 isItem8FoundSlot = true;
+				 }
 				 if(safe.iinventory.getStackInSlot(0) == null) {
-					 if(item1 != null) {
-						 safe.iinventory.setInventorySlotContents(0, item1);
-						 isItem1FoundSlot = true;
+					 if(isItem1FoundSlot == false) {
+						 if(item1 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item1);
+							 isItem1FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem2FoundSlot == false) {
+						 if(item2 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item2);
+							 isItem2FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem3FoundSlot == false) {
+						 if(item3 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item3);
+							 isItem3FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem4FoundSlot == false) {
+						 if(item4 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item4);
+							 isItem4FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem5FoundSlot == false) {
+						 if(item5 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item5);
+							 isItem5FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem6FoundSlot == false) {
+						 if(item6 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item6);
+							 isItem6FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem7FoundSlot == false) {
+						 if(item7 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item7);
+							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(0, item8);
+							 isItem8FoundSlot = true;
+						 } 
 					 }
 				 }
 				 if(safe.iinventory.getStackInSlot(1) == null) {
@@ -329,6 +411,42 @@ public class GuiShop extends GuiContainer {
 						 if(item2 != null) {
 							 safe.iinventory.setInventorySlotContents(1, item2);
 							 isItem2FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem3FoundSlot == false) {
+						 if(item3 != null) {
+							 safe.iinventory.setInventorySlotContents(1, item3);
+							 isItem3FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem4FoundSlot == false) {
+						 if(item4 != null) {
+							 safe.iinventory.setInventorySlotContents(1, item4);
+							 isItem4FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem5FoundSlot == false) {
+						 if(item5 != null) {
+							 safe.iinventory.setInventorySlotContents(1, item5);
+							 isItem5FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem6FoundSlot == false) {
+						 if(item6 != null) {
+							 safe.iinventory.setInventorySlotContents(1, item6);
+							 isItem6FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem7FoundSlot == false) {
+						 if(item7 != null) {
+							 safe.iinventory.setInventorySlotContents(1, item7);
+							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(1, item8);
+							 isItem8FoundSlot = true;
 						 } 
 					 }
 					 
@@ -350,6 +468,36 @@ public class GuiShop extends GuiContainer {
 						 if(item3 != null) {
 							 safe.iinventory.setInventorySlotContents(2, item3);
 							 isItem3FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem4FoundSlot == false) {
+						 if(item4 != null) {
+							 safe.iinventory.setInventorySlotContents(2, item4);
+							 isItem4FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem5FoundSlot == false) {
+						 if(item5 != null) {
+							 safe.iinventory.setInventorySlotContents(2, item5);
+							 isItem5FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem6FoundSlot == false) {
+						 if(item6 != null) {
+							 safe.iinventory.setInventorySlotContents(2, item6);
+							 isItem6FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem7FoundSlot == false) {
+						 if(item7 != null) {
+							 safe.iinventory.setInventorySlotContents(2, item7);
+							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(2, item8);
+							 isItem8FoundSlot = true;
 						 } 
 					 }
 					 
@@ -377,6 +525,30 @@ public class GuiShop extends GuiContainer {
 						 if(item4 != null) {
 							 safe.iinventory.setInventorySlotContents(3, item4);
 							 isItem4FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem5FoundSlot == false) {
+						 if(item5 != null) {
+							 safe.iinventory.setInventorySlotContents(3, item5);
+							 isItem5FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem6FoundSlot == false) {
+						 if(item6 != null) {
+							 safe.iinventory.setInventorySlotContents(3, item6);
+							 isItem6FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem7FoundSlot == false) {
+						 if(item7 != null) {
+							 safe.iinventory.setInventorySlotContents(3, item7);
+							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(3, item8);
+							 isItem8FoundSlot = true;
 						 } 
 					 }
 					 
@@ -410,6 +582,24 @@ public class GuiShop extends GuiContainer {
 						 if(item5 != null) {
 							 safe.iinventory.setInventorySlotContents(4, item5);
 							 isItem5FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem6FoundSlot == false) {
+						 if(item6 != null) {
+							 safe.iinventory.setInventorySlotContents(4, item6);
+							 isItem6FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem7FoundSlot == false) {
+						 if(item7 != null) {
+							 safe.iinventory.setInventorySlotContents(4, item7);
+							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(4, item8);
+							 isItem8FoundSlot = true;
 						 } 
 					 }
 					 
@@ -449,6 +639,18 @@ public class GuiShop extends GuiContainer {
 						 if(item6 != null) {
 							 safe.iinventory.setInventorySlotContents(5, item6);
 							 isItem6FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem7FoundSlot == false) {
+						 if(item7 != null) {
+							 safe.iinventory.setInventorySlotContents(5, item7);
+							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(5, item8);
+							 isItem8FoundSlot = true;
 						 } 
 					 }
 					 
@@ -494,6 +696,12 @@ public class GuiShop extends GuiContainer {
 						 if(item7 != null) {
 							 safe.iinventory.setInventorySlotContents(6, item7);
 							 isItem7FoundSlot = true;
+						 } 
+					 }
+					 else if(isItem8FoundSlot == false) {
+						 if(item8 != null) {
+							 safe.iinventory.setInventorySlotContents(6, item8);
+							 isItem8FoundSlot = true;
 						 } 
 					 }
 					 
@@ -1587,7 +1795,10 @@ public class GuiShop extends GuiContainer {
 				 int centeredX = this.width / 2 - 35 / 2;
 				 int centeredY = this.height / 2 - 19 / 2;
 				 String colorText = EnumChatFormatting.RED + sumPriceStr;
-				 this.buttonList.add(new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText));
+				 buttonApllyNE.visible = false;
+				 buttonApply.visible = false;
+				 buttonApplyNS.visible = true;
+				 buttonApplyNM.visible = false;
 				 this.updateScreen();
 			 }else {
 				 safe.iinventory.openInventory();
@@ -1609,11 +1820,18 @@ public class GuiShop extends GuiContainer {
 					 int centeredX = this.width / 2 - 35 / 2;
 					 int centeredY = this.height / 2 - 19 / 2;
 					 String colorText = EnumChatFormatting.RED + sumPriceStr;
-					 this.buttonList.add(new GuiButton(19, centeredX - 64, centeredY - 10, 35, 18, colorText));
+					 buttonApllyNE.visible = false;
+					 buttonApply.visible = false;
+					 buttonApplyNS.visible = false;
+					 buttonApplyNM.visible = true;
 					 this.updateScreen();
 					 isBought = false;
 					 
 				 }else {
+					 buttonApllyNE.visible = false;
+					 buttonApply.visible = true;
+					 buttonApplyNS.visible = false;
+					 buttonApplyNM.visible = false;
 					 ItemStack item1 = new ItemStack(Test.Amethyst, item1_type_amount);
 					 ItemStack item2 = new ItemStack(Test.Amethyst, item2_type_amount);
 					 ItemStack item3 = new ItemStack(Test.Amethyst, item3_type_amount);
