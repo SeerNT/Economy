@@ -5,13 +5,16 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class CustomAmetSlab extends BlockSlab {
 	public static final String[] field_150005_b = new String[] {"amet"};
@@ -34,6 +37,11 @@ public class CustomAmetSlab extends BlockSlab {
     }
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+    {
+        return Item.getItemFromBlock(Test.amethystSlab);
+    }
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
     {
         return Item.getItemFromBlock(Test.amethystSlab);
     }

@@ -40,7 +40,11 @@ public class CustomRubySlab extends BlockSlab {
     {
         return Item.getItemFromBlock(Test.rubySlab);
     }
-
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
+    {
+        return Item.getItemFromBlock(Test.rubySlab);
+    }
     /**
      * Returns an item stack containing a single instance of the current block type. 'i' is the block's subtype/damage
      * and is ignored for blocks which do not support subtypes. Blocks which cannot be harvested should return null.
