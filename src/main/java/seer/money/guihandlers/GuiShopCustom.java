@@ -59,6 +59,36 @@ public class GuiShopCustom extends GuiContainer {
 	public static ItemStack item4;
 	public static ItemStack item5;
 	public static ItemStack item6;
+	private GuiButton button1;
+	private GuiButton button2;
+	private GuiButton button3;
+	private GuiButton button4;
+	private GuiButton button5;
+	private GuiButton button6;
+	private GuiButton button7;
+	private GuiButton button8;
+	private GuiButton button9;
+	private GuiButton button10;
+	private GuiButton button11;
+	private GuiButton button12;
+	private GuiButton button13;
+	private GuiButton button14;
+	private GuiButton button15;
+	private GuiButton button16;
+	private GuiButton button17;
+	private GuiButton button18;
+	private GuiButton button19;
+	private GuiButton button20;
+	private GuiButton button21;
+	private GuiButton button22;
+	private GuiButton button23;
+	private GuiButton button24;
+	private GuiButton button25;
+	private GuiButton button26;
+	private GuiButton button27;
+	private GuiButton button28;
+	private GuiButton button29;
+	private GuiButton button30;
 	public static double item1_price = 0.0;
 	public static double item2_price = 0.0;
 	public static double item3_price = 0.0;
@@ -97,6 +127,7 @@ public class GuiShopCustom extends GuiContainer {
 	  int centeredY = this.height / 2 - 19 / 2;
 	  super.initGui();
 	  this.buttonList.add(new GuiButton( 1, centeredX - 10, centeredY + 94, 38, 20, "Continue"));
+	  this.buttonList.add(button1 = new GuiButton( 2, centeredX - 50, centeredY - 24, 18, 14, "Add"));
 	 }
 	 /**
 	     * Called when the screen is unloaded. Used to disable keyboard repeat 
