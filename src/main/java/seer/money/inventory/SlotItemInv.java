@@ -5,6 +5,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import ru.seer.money.Cents;
 import ru.seer.money.Dollars;
+import ru.seer.money.PackOfDollars;
+import ru.seer.money.Test;
 import ru.seer.money.Wallet;
 
 public class SlotItemInv extends Slot
@@ -26,6 +28,6 @@ public class SlotItemInv extends Slot
 	{
 		// Everything returns true except an instance of our Item
 		//itemstack.getItem() instanceof Dollars) || (itemstack.getItem() instanceof Cents)
-		return (!(itemstack.getItem() instanceof Wallet) && ((itemstack.getItem() instanceof Dollars)));
+		return (!(itemstack.getItem() instanceof Wallet) && ((itemstack.getItem() instanceof Dollars) || (itemstack == new ItemStack(Test.PackOfDollars))));
 	}
 }
