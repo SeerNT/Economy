@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
@@ -26,18 +28,14 @@ import seer.money.containers.ContainerShopCustom;
 
 public class GuiShopCustom extends GuiContainer {
 	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("money", "textures/gui/CustomGui.png");
+	private static ResourceLocation[] bookPageTextures = 
+            new ResourceLocation[4];
 	private ShopTileEntity tileFurnace;
 	public World wor;
 	public EntityPlayer pla;
 	public int x2;
 	public int y2;
 	public int z2;
-	private String timeD;
-	private String curTime;
-	private long first;
-	private String remainingTime;
-	private long second;
-	public static String userTime;
 	public static Boolean ck = false;
 	public static String time;
 	// Для слотов
@@ -59,36 +57,36 @@ public class GuiShopCustom extends GuiContainer {
 	public static ItemStack item4;
 	public static ItemStack item5;
 	public static ItemStack item6;
-	private GuiButton button1;
-	private GuiButton button2;
-	private GuiButton button3;
-	private GuiButton button4;
-	private GuiButton button5;
-	private GuiButton button6;
-	private GuiButton button7;
-	private GuiButton button8;
-	private GuiButton button9;
-	private GuiButton button10;
-	private GuiButton button11;
-	private GuiButton button12;
-	private GuiButton button13;
-	private GuiButton button14;
-	private GuiButton button15;
-	private GuiButton button16;
-	private GuiButton button17;
-	private GuiButton button18;
-	private GuiButton button19;
-	private GuiButton button20;
-	private GuiButton button21;
-	private GuiButton button22;
-	private GuiButton button23;
-	private GuiButton button24;
-	private GuiButton button25;
-	private GuiButton button26;
-	private GuiButton button27;
-	private GuiButton button28;
-	private GuiButton button29;
-	private GuiButton button30;
+	private PlusButton button1;
+	private PlusButton button2;
+	private PlusButton button3;
+	private PlusButton button4;
+	private PlusButton button5;
+	private PlusButton button6;
+	private PlusButton button7;
+	private PlusButton button8;
+	private PlusButton button9;
+	private PlusButton button10;
+	private PlusButton button11;
+	private PlusButton button12;
+	private PlusButton button13;
+	private PlusButton button14;
+	private PlusButton button15;
+	private PlusButton button16;
+	private PlusButton button17;
+	private PlusButton button18;
+	private PlusButton button19;
+	private PlusButton button20;
+	private PlusButton button21;
+	private PlusButton button22;
+	private PlusButton button23;
+	private PlusButton button24;
+	private PlusButton button25;
+	private PlusButton button26;
+	private PlusButton button27;
+	private PlusButton button28;
+	private PlusButton button29;
+	private PlusButton button30;
 	public static double item1_price = 0.0;
 	public static double item2_price = 0.0;
 	public static double item3_price = 0.0;
@@ -99,13 +97,8 @@ public class GuiShopCustom extends GuiContainer {
 	
 	public GuiShopCustom(InventoryPlayer inventory, ShopTileEntity tileEntityTestContainer, World world, EntityPlayer player, int x, int y, int z) {
 		super(new ContainerShopCustom(inventory, tileEntityTestContainer));
-		// Дата	
-	    Date dateNow = new Date();
-	    SimpleDateFormat formatForDateNow = new SimpleDateFormat("dd kk:mm:ss");
-	    SimpleDateFormat formatForDateNow2 = new SimpleDateFormat("kk:mm:ss");
-	    timeD = formatForDateNow.format(dateNow);
-	    userTime =  formatForDateNow2.format(dateNow);
-	    first = dateNow.getTime();
+		bookPageTextures[1] = new ResourceLocation(
+        		"money:textures/gui/PlusButton.png");
 		this.tileFurnace = tileEntityTestContainer;
 		this.width = sr.getScaledWidth();
 		this.height = sr.getScaledHeight();
@@ -115,7 +108,52 @@ public class GuiShopCustom extends GuiContainer {
 		y2 = y;
 		z2 = z;
 	}
-	
+	@SideOnly(Side.CLIENT)
+    static class PlusButton extends GuiButton
+    {
+        private final boolean isNextButton;
+
+        public PlusButton(int parButtonId, int parPosX, int parPosY, 
+              boolean parIsNextButton)
+        {
+            super(parButtonId, parPosX, parPosY, 23, 13, "");
+            isNextButton = parIsNextButton;
+        }
+
+
+        /**
+         * Draws this button to the screen.
+         */
+        @Override
+        public void drawButton(Minecraft mc, int parX, int parY)
+        {
+            if (visible)
+            {
+                boolean isButtonPressed = (parX >= xPosition 
+                      && parY >= yPosition 
+                      && parX < xPosition + width 
+                      && parY < yPosition + height);
+                GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+                mc.getTextureManager().bindTexture(bookPageTextures[1]);
+                int textureX = 0;
+                int textureY = 192;
+
+                if (isButtonPressed)
+                {
+                    textureX += 23;
+                }
+
+                if (!isNextButton)
+                {
+                    textureY += 13;
+                }
+
+                drawTexturedModalRect(xPosition, yPosition, 
+                      textureX, textureY, 
+                      23, 13);
+            }
+        }
+    }
 	public boolean changeGui(World world, int x, int y, int z, EntityPlayer player) {
 		player.openGui(Test.instance, 1, world, x, y, z);
 		return true;
@@ -127,7 +165,7 @@ public class GuiShopCustom extends GuiContainer {
 	  int centeredY = this.height / 2 - 19 / 2;
 	  super.initGui();
 	  this.buttonList.add(new GuiButton( 1, centeredX - 10, centeredY + 94, 38, 20, "Continue"));
-	  this.buttonList.add(button1 = new GuiButton( 2, centeredX - 50, centeredY - 24, 18, 14, "Add"));
+	  this.buttonList.add(button1 = new PlusButton( 2, centeredX - 62, centeredY - 29, false));
 	 }
 	 /**
 	     * Called when the screen is unloaded. Used to disable keyboard repeat 
