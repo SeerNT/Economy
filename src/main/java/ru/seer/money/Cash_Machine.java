@@ -3,6 +3,7 @@ package ru.seer.money;
 import static net.minecraftforge.common.util.ForgeDirection.DOWN;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
@@ -47,10 +48,20 @@ public class Cash_Machine extends BlockContainer {
 		this.setBlockTextureName("money:cashier");
 		
 	}
-
+	@Override
+    public void setBlockBoundsForItemRender() {
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F);
+    }
+	@Override
+    public void addCollisionBoxesToList(World worldIn,int x, int y, int z, AxisAlignedBB mask, List list, Entity collidingEntity) {
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F);
+        super.addCollisionBoxesToList(worldIn, x, y, z, mask, list, collidingEntity);
+        this.setBlockBoundsForItemRender();
+    }
+    
+	
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
-
 		return new Cash_MachineTileEntity();
 		
 	}
