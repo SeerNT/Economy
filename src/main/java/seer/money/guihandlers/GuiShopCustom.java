@@ -93,6 +93,14 @@ public class GuiShopCustom extends GuiContainer {
 	public static double item4_price = 0.0;
 	public static double item5_price = 0.0;
 	public static double item6_price = 0.0;
+	public static Item customItem1;
+	public static Item customItem2;
+	public static Item customItem3;
+	public static Item customItem4;
+	public static Item customItem5;
+	public static Item customItem6;
+	public static Item customItem7;
+	public static Item customItem8;
 	
 	
 	public GuiShopCustom(InventoryPlayer inventory, ShopTileEntity tileEntityTestContainer, World world, EntityPlayer player, int x, int y, int z) {
@@ -102,6 +110,14 @@ public class GuiShopCustom extends GuiContainer {
 		this.tileFurnace = tileEntityTestContainer;
 		this.width = sr.getScaledWidth();
 		this.height = sr.getScaledHeight();
+		customItem1 = Test.Amethyst;
+		customItem2 = Test.Amethyst;
+		customItem3 = Test.Amethyst;
+		customItem4 = Test.Amethyst;
+		customItem5 = Test.Amethyst;
+		customItem6 = Test.Amethyst;
+		customItem7 = Test.Amethyst;
+		customItem8 = Test.Amethyst;
 		wor = world;
 		pla = player;
 		x2 = x;
@@ -164,8 +180,41 @@ public class GuiShopCustom extends GuiContainer {
 	  int centeredX = this.width / 2 - 35 / 2;
 	  int centeredY = this.height / 2 - 19 / 2;
 	  super.initGui();
-	  this.buttonList.add(new GuiButton( 1, centeredX - 10, centeredY + 94, 38, 20, "Continue"));
+	  this.buttonList.add(new GuiButton( 1, centeredX - 3, centeredY + 94, 38, 20, "Continue"));
 	  this.buttonList.add(button1 = new PlusButton( 2, centeredX - 62, centeredY - 29, false));
+	  this.buttonList.add(button2 = new PlusButton( 3, centeredX - 36, centeredY - 29, false));
+	  this.buttonList.add(button3 = new PlusButton( 4, centeredX - 9, centeredY - 29, false));
+	  this.buttonList.add(button4 = new PlusButton( 5, centeredX + 17, centeredY - 29, false));
+	  this.buttonList.add(button5 = new PlusButton( 6, centeredX + 43, centeredY - 29, false));
+	  this.buttonList.add(button6 = new PlusButton( 7, centeredX + 69, centeredY - 29, false));
+	  
+	  this.buttonList.add(button7 = new PlusButton( 8, centeredX - 62, centeredY - 59, false));
+	  this.buttonList.add(button8 = new PlusButton( 9, centeredX - 36, centeredY - 59, false));
+	  this.buttonList.add(button9 = new PlusButton( 10, centeredX - 9, centeredY - 59, false));
+	  this.buttonList.add(button10 = new PlusButton( 11, centeredX + 17, centeredY - 59, false));
+	  this.buttonList.add(button11 = new PlusButton( 12, centeredX + 43, centeredY - 59, false));
+	  this.buttonList.add(button12 = new PlusButton( 13, centeredX + 69, centeredY - 59, false));
+	  
+	  this.buttonList.add(button13 = new PlusButton( 14, centeredX - 62, centeredY + 1, false));
+	  this.buttonList.add(button14 = new PlusButton( 15, centeredX - 36, centeredY + 1, false));
+	  this.buttonList.add(button15 = new PlusButton( 16, centeredX - 9, centeredY + 1, false));
+	  this.buttonList.add(button16 = new PlusButton( 17, centeredX + 17, centeredY + 1, false));
+	  this.buttonList.add(button17 = new PlusButton( 18, centeredX + 43, centeredY + 1, false));
+	  this.buttonList.add(button18 = new PlusButton( 19, centeredX + 69, centeredY + 1, false));
+	  
+	  this.buttonList.add(button19 = new PlusButton( 20, centeredX - 62, centeredY + 30, false));
+	  this.buttonList.add(button20 = new PlusButton( 21, centeredX - 36, centeredY + 30, false));
+	  this.buttonList.add(button21 = new PlusButton( 22, centeredX - 9, centeredY + 30, false));
+	  this.buttonList.add(button22 = new PlusButton( 23, centeredX + 17, centeredY + 30, false));
+	  this.buttonList.add(button23 = new PlusButton( 24, centeredX + 43, centeredY + 30, false));
+	  this.buttonList.add(button24 = new PlusButton( 25, centeredX + 69, centeredY + 30, false));
+	  
+	  this.buttonList.add(button25 = new PlusButton( 26, centeredX - 62, centeredY + 59, false));
+	  this.buttonList.add(button26 = new PlusButton( 27, centeredX - 36, centeredY + 59, false));
+	  this.buttonList.add(button27 = new PlusButton( 28, centeredX - 9, centeredY + 59, false));
+	  this.buttonList.add(button28 = new PlusButton( 29, centeredX + 17, centeredY + 59, false));
+	  this.buttonList.add(button29 = new PlusButton( 30, centeredX + 43, centeredY + 59, false));
+	  this.buttonList.add(button30 = new PlusButton( 31, centeredX + 69, centeredY + 59, false));
 	 }
 	 /**
 	     * Called when the screen is unloaded. Used to disable keyboard repeat 
@@ -213,6 +262,40 @@ public class GuiShopCustom extends GuiContainer {
 		 {
 			 changeGui(wor,x2,y2,z2,pla);
 		 }
+		 if(B.id == 2) {
+			 customItem1 = Test.Amethyst;
+		 }
+		 if(B.id == 3) {
+			 customItem1 = Test.Ruby;
+		 }
+		 if(B.id == 4) {}
+		 if(B.id == 5) {}
+		 if(B.id == 6) {}
+		 if(B.id == 7) {}
+		 if(B.id == 8) {}
+		 if(B.id == 9) {}
+		 if(B.id == 10) {}
+		 if(B.id == 11) {}
+		 if(B.id == 12) {}
+		 if(B.id == 13) {}
+		 if(B.id == 14) {}
+		 if(B.id == 15) {}
+		 if(B.id == 16) {}
+		 if(B.id == 17) {}
+		 if(B.id == 18) {}
+		 if(B.id == 19) {}
+		 if(B.id == 20) {}
+		 if(B.id == 21) {}
+		 if(B.id == 22) {}
+		 if(B.id == 23) {}
+		 if(B.id == 24) {}
+		 if(B.id == 25) {}
+		 if(B.id == 26) {}
+		 if(B.id == 27) {}
+		 if(B.id == 28) {}
+		 if(B.id == 29) {}
+		 if(B.id == 30) {}
+		 if(B.id == 31) {}
 	 }
 	 
 	ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayWidth);
