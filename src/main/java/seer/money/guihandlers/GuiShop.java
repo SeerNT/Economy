@@ -40,9 +40,9 @@ import seer.money.rendering.tileentities.safeTileEntity;
 public class GuiShop extends GuiContainer {
 	private final Random field_149955_b = new Random();
 	private static final int bookTotalPages = 4;
-    private static ResourceLocation[] bookPageTextures = 
-            new ResourceLocation[bookTotalPages];
-	private static final ResourceLocation furnaceGuiTextures = new ResourceLocation("money", "textures/blocks/ShopGui.png");
+    public static ResourceLocation bookPageTextures = 
+    		new ResourceLocation("money:textures/gui/book.png");
+	public static ResourceLocation furnaceGuiTextures = new ResourceLocation("money", "textures/blocks/ShopGui.png");
 	private ShopTileEntity tileFurnace;
 	public World wor;
 	public EntityPlayer pla;
@@ -62,6 +62,8 @@ public class GuiShop extends GuiContainer {
 	public static ItemStack item4;
 	public static ItemStack item5;
 	public static ItemStack item6;
+	public static ItemStack item7;
+	public static ItemStack item8;
 	public static int item1_type_amount = 0;
 	public static int item2_type_amount = 0;
 	public static int item3_type_amount = 0;
@@ -142,8 +144,7 @@ public class GuiShop extends GuiContainer {
 	
 	public GuiShop(InventoryPlayer invPlayer, ShopTileEntity tile, World world, EntityPlayer player, int x, int y, int z) {
 		super(new ContainerShop(invPlayer, tile, player));
-		bookPageTextures[1] = new ResourceLocation(
-        		"money:textures/gui/book.png");
+		
 		ExtendedPlayer props = ExtendedPlayer.get(player);
 		stringPageText[0]="x0";
 		stringPageText2[0]="x0";
@@ -216,7 +217,7 @@ public class GuiShop extends GuiContainer {
                       && parX < xPosition + width 
                       && parY < yPosition + height);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-                mc.getTextureManager().bindTexture(bookPageTextures[1]);
+                mc.getTextureManager().bindTexture(bookPageTextures);
                 int textureX = 0;
                 int textureY = 192;
 
@@ -1832,14 +1833,25 @@ public class GuiShop extends GuiContainer {
 					 buttonApply.visible = true;
 					 buttonApplyNS.visible = false;
 					 buttonApplyNM.visible = false;
-					 ItemStack item1 = new ItemStack(Test.Amethyst, item1_type_amount);
-					 ItemStack item2 = new ItemStack(Test.Amethyst, item2_type_amount);
-					 ItemStack item3 = new ItemStack(Test.Amethyst, item3_type_amount);
-					 ItemStack item4 = new ItemStack(Test.Amethyst, item4_type_amount);
-					 ItemStack item5 = new ItemStack(Test.Amethyst, item5_type_amount);
-					 ItemStack item6 = new ItemStack(Test.Amethyst, item6_type_amount);
-					 ItemStack item7 = new ItemStack(Test.Amethyst, item7_type_amount);
-					 ItemStack item8 = new ItemStack(Test.Amethyst, item8_type_amount);
+					 if (GuiShopCustom.item1 == Items.skull) {
+						 item1 = new ItemStack(GuiShopCustom.item1, item1_type_amount, 1);
+						 item2 = new ItemStack(GuiShopCustom.item1, item2_type_amount, 1);
+						 item3 = new ItemStack(GuiShopCustom.item1, item3_type_amount, 1);
+						 item4 = new ItemStack(GuiShopCustom.item1, item4_type_amount, 1);
+						 item5 = new ItemStack(GuiShopCustom.item1, item5_type_amount, 1);
+						 item6 = new ItemStack(GuiShopCustom.item1, item6_type_amount, 1);
+						 item7 = new ItemStack(GuiShopCustom.item1, item7_type_amount, 1);
+						 item8 = new ItemStack(GuiShopCustom.item1, item8_type_amount, 1);
+					 }else {
+						 item1 = new ItemStack(GuiShopCustom.item1, item1_type_amount);
+						 item2 = new ItemStack(GuiShopCustom.item1, item2_type_amount);
+						 item3 = new ItemStack(GuiShopCustom.item1, item3_type_amount);
+						 item4 = new ItemStack(GuiShopCustom.item1, item4_type_amount);
+						 item5 = new ItemStack(GuiShopCustom.item1, item5_type_amount);
+						 item6 = new ItemStack(GuiShopCustom.item1, item6_type_amount);
+						 item7 = new ItemStack(GuiShopCustom.item1, item7_type_amount);
+						 item8 = new ItemStack(GuiShopCustom.item1, item8_type_amount);
+					 }
 					 if(item1_type_amount == 0) {
 						 item1 = null;
 					 }
@@ -1913,7 +1925,6 @@ public class GuiShop extends GuiContainer {
 		 // First ButtonCollection
 		 if (B == buttonUp3)
 	     {	
-			 	item1_price = 9.2;
 	        	--pageNumber;
 	        	--item1_type_amount;
 	        	if (pageNumber < 0) {
@@ -1924,14 +1935,14 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber = 0;
 	        		item1_type_amount = 0;
 	        	}
-	        	sumPrice = item1_price * item1_type_amount;
+	        	item1_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item1_type_amount));
+	        	sumPrice = item1_price;
 	        	item1_price = 0.0;
 	        	stringPageText[0]="x" + String.valueOf(pageNumber);
 	        	this.updateScreen();
 	     }
 	     else if (B == buttonUp4)
 	     {
-	    	 	item1_price = 9.2;
 	        	++pageNumber;
 	        	++item1_type_amount;
 	        	if (pageNumber < 0) {
@@ -1942,7 +1953,8 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber = 0;
 	        		item1_type_amount = 0;
 	        	}
-	        	sumPrice = item1_price * item1_type_amount;
+	        	item1_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item1_type_amount));
+	        	sumPrice = item1_price;
 	        	item1_price = 0.0;
 	            stringPageText[0]="x" +String.valueOf(pageNumber);
 	            this.updateScreen();
@@ -1950,7 +1962,6 @@ public class GuiShop extends GuiContainer {
 		 // Second ButtonCollection
 	     else if (B == buttonUp)
 	     {	
-	        	item2_price = 9.2;
 	        	--pageNumber2;
 	        	--item2_type_amount;
 	        	if (pageNumber2 < 0) {
@@ -1961,14 +1972,14 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber2 = 0;
 	        		item2_type_amount = 0;
 	        	}
-	        	sumPrice2 = item2_price * item2_type_amount;
+	        	item2_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item2_type_amount));
+	        	sumPrice2 = item2_price;
 	        	item2_price = 0.0;
 	        	stringPageText2[0]="x" + String.valueOf(pageNumber2);
 	        	this.updateScreen();
 	     }
 	     else if (B == buttonUp2)
 	     {
-	    	    item2_price = 9.2;
 	        	++pageNumber2;
 	        	++item2_type_amount;
 	        	if (pageNumber2 < 0) {
@@ -1979,7 +1990,8 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber2 = 0;
 	        		item2_type_amount = 0;
 	        	}
-	        	sumPrice2 = item2_price * item2_type_amount;
+	        	item2_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item2_type_amount));
+	        	sumPrice2 = item2_price;
 	        	item2_price = 0.0;
 	        	stringPageText2[0]="x" + String.valueOf(pageNumber2);
 	        	this.updateScreen();
@@ -1987,7 +1999,6 @@ public class GuiShop extends GuiContainer {
 		 // Third ButtonCollection
 	     else if (B == buttonUp5)
 	     {	
-	    	    item3_price = 9.2;
 	        	--pageNumber3;
 	        	--item3_type_amount;
 	        	if (pageNumber3 < 0) {
@@ -1998,15 +2009,15 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber3 = 0;
 	        		item3_type_amount = 0;
 	        	}
-	        	sumPrice3 = item3_price * item3_type_amount;
+	        	item3_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item3_type_amount));
+	        	sumPrice3 = item3_price;
 	        	item3_price = 0.0;
 	        	stringPageText3[0]="x" + String.valueOf(pageNumber3);
 	        	this.updateScreen();
 	     }
 	     else if (B == buttonUp6)
 	     {
-	    	    item3_price = 9.2;
-	        	++pageNumber3;
+	    	    ++pageNumber3;
 	        	++item3_type_amount;
 	        	if (pageNumber3 < 0) {
 	        		pageNumber3 = 64;
@@ -2016,7 +2027,8 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber3 = 0;
 	        		item3_type_amount = 0;
 	        	}
-	        	sumPrice3 = item3_price * item3_type_amount;
+	        	item3_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item3_type_amount));
+	        	sumPrice3 = item3_price;
 	        	item3_price = 0.0;
 	        	stringPageText3[0]="x" + String.valueOf(pageNumber3);
 	        	this.updateScreen();
@@ -2024,7 +2036,6 @@ public class GuiShop extends GuiContainer {
 		 // Fourth ButtonCollection
 	     else if (B == buttonUp7)
 	     {	
-	    	    item4_price = 9.2;
 	        	--pageNumber4;
 	        	--item4_type_amount;
 	        	if (pageNumber4 < 0) {
@@ -2035,15 +2046,15 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber4 = 0;
 	        		item4_type_amount = 0;
 	        	}
-	        	sumPrice4 = item4_price * item4_type_amount;
+	        	item4_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item4_type_amount));
+	        	sumPrice4 = item4_price;
 	        	item4_price = 0.0;
 	        	stringPageText4[0]="x" + String.valueOf(pageNumber4);
 	        	this.updateScreen();
 	     }
 	     else if (B == buttonUp8)
 	     {
-	    	    item4_price = 9.2;
-	        	++pageNumber4;
+	    	    ++pageNumber4;
 	        	++item4_type_amount;
 	        	if (pageNumber4 < 0) {
 	        		pageNumber4 = 64;
@@ -2053,7 +2064,8 @@ public class GuiShop extends GuiContainer {
 	        		pageNumber4 = 0;
 	        		item4_type_amount = 0;
 	        	}
-	        	sumPrice4 = item4_price * item4_type_amount;
+	        	item4_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item4_type_amount));
+	        	sumPrice4 = item4_price;
 	        	item4_price = 0.0;
 	        	stringPageText4[0]="x" + String.valueOf(pageNumber4);
 	        	this.updateScreen();
@@ -2062,7 +2074,6 @@ public class GuiShop extends GuiContainer {
 		 // 5 ButtonCollection
 				 if (B == buttonDown3)
 			     {	
-					    item5_price = 9.2;
 			        	--pageNumber5;
 			        	--item5_type_amount;
 			        	if (pageNumber5 < 0) {
@@ -2073,14 +2084,14 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber5= 0;
 			        		item5_type_amount = 0;
 			        	}
-			        	sumPrice5 = item5_price * item5_type_amount;
+			        	item5_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item5_type_amount));
+			        	sumPrice5 = item5_price;
 			        	item5_price = 0.0;
 			        	stringPageText5[0]="x" + String.valueOf(pageNumber5);
 			        	this.updateScreen();
 			     }
 			     else if (B == buttonDown4)
 			     {
-			    	    item5_price = 9.2;
 			        	++pageNumber5;
 			        	++item5_type_amount;
 			        	if (pageNumber5 < 0) {
@@ -2091,7 +2102,8 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber5= 0;
 			        		item5_type_amount = 0;
 			        	}
-			        	sumPrice5 = item5_price * item5_type_amount;
+			        	item5_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item5_type_amount));
+			        	sumPrice5 = item5_price;
 			        	item5_price = 0.0;
 			        	stringPageText5[0]="x" + String.valueOf(pageNumber5);
 			        	this.updateScreen();
@@ -2099,7 +2111,6 @@ public class GuiShop extends GuiContainer {
 				 // 6 ButtonCollection
 			     else if (B == buttonDown)
 			     {	
-			    	    item6_price = 9.2;
 			        	--pageNumber6;
 			        	--item6_type_amount;
 			        	if (pageNumber6 < 0) {
@@ -2110,15 +2121,15 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber6= 0;
 			        		item6_type_amount = 0;
 			        	}
-			        	sumPrice6 = item6_price * item6_type_amount;
+			        	item6_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item6_type_amount));
+			        	sumPrice6 = item6_price;
 			        	item6_price = 0.0;
 			        	stringPageText6[0]="x" + String.valueOf(pageNumber6);
 			        	this.updateScreen();
 			     }
 			     else if (B == buttonDown2)
 			     {
-			    	 item6_price = 9.2;
-			        	++pageNumber6;
+			    	    ++pageNumber6;
 			        	++item6_type_amount;
 			        	if (pageNumber6 < 0) {
 			        		pageNumber6 = 64;
@@ -2128,7 +2139,8 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber6= 0;
 			        		item6_type_amount = 0;
 			        	}
-			        	sumPrice6 = item6_price * item6_type_amount;
+			        	item6_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item6_type_amount));
+			        	sumPrice6 = item6_price;
 			        	item6_price = 0.0;
 			        	stringPageText6[0]="x" + String.valueOf(pageNumber6);
 			        	this.updateScreen();
@@ -2136,7 +2148,6 @@ public class GuiShop extends GuiContainer {
 				 // 7 ButtonCollection
 			     else if (B == buttonDown5)
 			     {	
-			    	 item7_price = 9.2;
 			        	--pageNumber7;
 			        	--item7_type_amount;
 			        	if (pageNumber7 < 0) {
@@ -2147,14 +2158,14 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber7= 0;
 			        		item7_type_amount = 0;
 			        	}
-			        	sumPrice7 = item7_price * item7_type_amount;
+			        	item7_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item7_type_amount));
+			        	sumPrice7 = item7_price;
 			        	item7_price = 0.0;
 			        	stringPageText7[0]="x" + String.valueOf(pageNumber7);
 			        	this.updateScreen();
 			     }
 			     else if (B == buttonDown6)
 			     {
-			    	 item7_price = 9.2;
 			        	++pageNumber7;
 			        	++item7_type_amount;
 			        	if (pageNumber7 < 0) {
@@ -2165,7 +2176,8 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber7= 0;
 			        		item7_type_amount = 0;
 			        	}
-			        	sumPrice7 = item7_price * item7_type_amount;
+			        	item7_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item7_type_amount));
+			        	sumPrice7 = item7_price;
 			        	item7_price = 0.0;
 			        	stringPageText7[0]="x" + String.valueOf(pageNumber7);
 			        	this.updateScreen();
@@ -2173,7 +2185,6 @@ public class GuiShop extends GuiContainer {
 				 // 8 ButtonCollection
 			     else if (B == buttonDown7)
 			     {	
-			    	 item8_price = 9.2;
 			        	--pageNumber8;
 			        	--item8_type_amount;
 			        	if (pageNumber8 < 0) {
@@ -2184,14 +2195,14 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber8= 0;
 			        		item8_type_amount = 0;
 			        	}
-			        	sumPrice8 = item8_price * item8_type_amount;
+			        	item8_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item8_type_amount));
+			        	sumPrice8 = item8_price;
 			        	item8_price = 0.0;
 			        	stringPageText8[0]="x" + String.valueOf(pageNumber8);
 			        	this.updateScreen();
 			     }
 			     else if (B == buttonDown8)
 			     {
-			    	 item8_price = 9.2;
 			        	++pageNumber8;
 			        	++item8_type_amount;
 			        	if (pageNumber8 < 0) {
@@ -2202,7 +2213,8 @@ public class GuiShop extends GuiContainer {
 			        		pageNumber8= 0;
 			        		item8_type_amount = 0;
 			        	}
-			        	sumPrice8 = item8_price * item8_type_amount;
+			        	item8_price = GuiShopCustom.getCost(new ItemStack(GuiShopCustom.item1,item8_type_amount));
+			        	sumPrice8 = item8_price;
 			        	item8_price = 0.0;
 			        	stringPageText8[0]="x" + String.valueOf(pageNumber8);
 			        	this.updateScreen();
@@ -2218,7 +2230,7 @@ public class GuiShop extends GuiContainer {
 
     
 	protected void drawGuiContainerForegroundLayer(int par1, int par2){
-		mc.getTextureManager().bindTexture(bookPageTextures[1]);
+		mc.getTextureManager().bindTexture(bookPageTextures);
 		sumPrice = Math.round(sumPrice * 10) / 10.0;
 		sumPrice2 = Math.round(sumPrice2 * 10) / 10.0;
 		sumPrice3 = Math.round(sumPrice3 * 10) / 10.0;
@@ -2250,7 +2262,7 @@ public class GuiShop extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-		mc.getTextureManager().bindTexture(bookPageTextures[1]);
+		mc.getTextureManager().bindTexture(bookPageTextures);
 		 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 	        this.mc.getTextureManager().bindTexture(furnaceGuiTextures);
 	        int k = (this.width - this.xSize) / 2;

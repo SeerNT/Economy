@@ -17,12 +17,14 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import ru.seer.money.ShopTileEntity;
 import ru.seer.money.Test;
+import ru.seer.money.safe;
 import seer.money.containers.ContainerShop;
 import seer.money.containers.ContainerShopCustom;
 
@@ -45,18 +47,22 @@ public class GuiShopCustom extends GuiContainer {
 	public static Boolean decorIs = false;
 	public static Boolean mobsIs = false;
 	public static Boolean uniqueIs = false;
-	public static Boolean item1IsNull = true;
-	public static Boolean item2IsNull = true;
-	public static Boolean item3IsNull = true;
-	public static Boolean item4IsNull = true;
-	public static Boolean item5IsNull = true;
-	public static Boolean item6IsNull = true;
-	public static ItemStack item1;
-	public static ItemStack item2;
-	public static ItemStack item3;
-	public static ItemStack item4;
-	public static ItemStack item5;
-	public static ItemStack item6;
+	public static Item item1 = Test.Amethyst;
+	public static Item item2 = Test.Amethyst;
+	public static Item item3 = Test.Amethyst;
+	public static Item item4 = Test.Amethyst;
+	public static Item item5 = Test.Amethyst;
+	public static Item item6 = Test.Amethyst;
+	public static Item item7 = Test.Amethyst;
+	public static Item item8 = Test.Amethyst;
+	public static boolean isItem1FoundSlot = false;
+	public static boolean isItem2FoundSlot = false;
+	public static boolean isItem3FoundSlot = false;
+	public static boolean isItem4FoundSlot = false;
+	public static boolean isItem5FoundSlot = false;
+	public static boolean isItem6FoundSlot = false;
+	public static boolean isItem7FoundSlot = false;
+	public static boolean isItem8FoundSlot = false;
 	private PlusButton button1;
 	private PlusButton button2;
 	private PlusButton button3;
@@ -93,6 +99,8 @@ public class GuiShopCustom extends GuiContainer {
 	public static double item4_price = 0.0;
 	public static double item5_price = 0.0;
 	public static double item6_price = 0.0;
+	public static double item7_price = 0.0;
+	public static double item8_price = 0.0;
 	public static Item customItem1;
 	public static Item customItem2;
 	public static Item customItem3;
@@ -228,28 +236,97 @@ public class GuiShopCustom extends GuiContainer {
 			GuiShop.sumPriceStr = "0.0";
 	 	    ContainerShopCustom.isCreated = false;
 	    }
-	 public double getCost(ItemStack item) {
+	 public static double getCost(ItemStack item) {
 		 int item_length = item.stackSize;
+		 if (item.getItem() == new ItemStack(Items.diamond).getItem()) {
+			 return 6.4 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.emerald).getItem()) {
+			 return 7.4 * item_length;
+		 }
 		 if (item.getItem() == new ItemStack(Test.Amethyst).getItem()) {
-			 return 10 * item_length;
+			 return 9.2 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Test.Ruby).getItem()) {
+			 return 22.2 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.RubyHelmet).getItem()) {
+			 return 111 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.RubyChestplate).getItem()) {
+			 return 177.6 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.RubyPants).getItem()) {
+			 return 155.4 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.RubyBoots).getItem()) {
+			 return 88.8 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.RubyPickaxe).getItem()) {
+			 return 67 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Test.Sapphire).getItem()) {
+			 return 16.2 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Test.Opal).getItem()) {
+			 return 36.2 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.OpalHelmet).getItem()) {
+			 return 181 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.OpalChestplate).getItem()) {
+			 return 289.6 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.OpalPants).getItem()) {
+			 return 253.4 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.OpalBoots).getItem()) {
+			 return 144.8 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.ender_eye).getItem()) {
+			 return 21 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.experience_bottle).getItem()) {
+			 return 20 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.nether_star).getItem()) {
+			 return 45 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.saddle).getItem()) {
+			 return 16 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.skull).getItem()) {
+			 return 28 * item_length;
+		 }
+		 if (item.getItem() == new ItemStack(Items.magma_cream).getItem()) {
+			 return 7 * item_length;
 		 }
 		 if(item.getItem() == new ItemStack(Test.AmethystHelmet).getItem()) {
-			 return 90.25 * item_length;
+			 return 44 * item_length;
 		 }
 		 if(item.getItem() == new ItemStack(Test.AmethystChestplate).getItem()) {
-			 return 73.6 * item_length;
+			 return 73.2 * item_length;
 		 }
 		 if(item.getItem() == new ItemStack(Test.AmethystPants).getItem()) {
-			 return 64.4 * item_length;
+			 return 64.2 * item_length;
 		 }
 		 if(item.getItem() == new ItemStack(Test.AmethystBoots).getItem()) {
-			 return 36.8 * item_length;
+			 return 36.4 * item_length;
 		 }
-		 if(item.getItem() == new ItemStack(Test.AmethystSword).getItem()) {
-			 return 18.65 * item_length;
+		 if(item.getItem() == new ItemStack(Test.AmethystPickaxe).getItem()) {
+			 return 28 * item_length;
 		 }
-		 if(item.getItem() == new ItemStack(Test.AmethystBow).getItem()) {
-			 return 28.25 * item_length;
+		 if(item.getItem() == new ItemStack(Test.ReinforcedAmethyst).getItem()) {
+			 return 18 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.ReinforcedDoorItem).getItem()) {
+			 return 100 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.Pistol).getItem()) {
+			 return 85 * item_length;
+		 }
+		 if(item.getItem() == new ItemStack(Test.pistBullet).getItem()) {
+			 return 2 * item_length;
 		 }
 		 return 0.0;
 		 
@@ -263,39 +340,251 @@ public class GuiShopCustom extends GuiContainer {
 			 changeGui(wor,x2,y2,z2,pla);
 		 }
 		 if(B.id == 2) {
-			 customItem1 = Test.Amethyst;
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.AmethystHelmet;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiAmHelmet.png");
+				 //isItem1FoundSlot = true;
+			 }
 		 }
 		 if(B.id == 3) {
-			 customItem1 = Test.Ruby;
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.AmethystChestplate;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiAmChestplate.png");
+				 //isItem1FoundSlot = true;
+			 }
 		 }
-		 if(B.id == 4) {}
-		 if(B.id == 5) {}
-		 if(B.id == 6) {}
-		 if(B.id == 7) {}
-		 if(B.id == 8) {}
-		 if(B.id == 9) {}
-		 if(B.id == 10) {}
-		 if(B.id == 11) {}
-		 if(B.id == 12) {}
-		 if(B.id == 13) {}
-		 if(B.id == 14) {}
-		 if(B.id == 15) {}
-		 if(B.id == 16) {}
-		 if(B.id == 17) {}
-		 if(B.id == 18) {}
-		 if(B.id == 19) {}
-		 if(B.id == 20) {}
-		 if(B.id == 21) {}
-		 if(B.id == 22) {}
-		 if(B.id == 23) {}
-		 if(B.id == 24) {}
-		 if(B.id == 25) {}
-		 if(B.id == 26) {}
-		 if(B.id == 27) {}
-		 if(B.id == 28) {}
-		 if(B.id == 29) {}
-		 if(B.id == 30) {}
-		 if(B.id == 31) {}
+		 if(B.id == 4) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.AmethystPants;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiAmPants.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 5) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.AmethystBoots;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiAmBoots.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 6) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.AmethystPickaxe;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiAmPickaxe.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 7) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.ReinforcedAmethyst;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiAmReinforced.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 8) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.Amethyst;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/blocks/ShopGui.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 9) {
+			 if(isItem2FoundSlot == false) {
+				 item1 = Test.Ruby;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiRuby.png");
+				 //isItem2FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 10) {
+			 if(isItem3FoundSlot == false) {
+				 item1 = Test.Sapphire;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiSapphire.png");
+				 //isItem3FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 11) {
+			 if(isItem4FoundSlot == false) {
+				 item1 = Test.Opal;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiOpal.png");
+				 //isItem4FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 12) {
+			 if(isItem5FoundSlot == false) {
+				 item1 = Test.Pistol;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiPistol.png");
+				 //isItem5FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 13) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.pistBullet;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiBullet.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 14) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.RubyHelmet;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiRuHelmet.png");
+				 //isItem6FoundSlot = true;
+			 }
+			 
+		 }
+		 if(B.id == 15) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.RubyChestplate;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiRuChestplate.png");
+				 //isItem1FoundSlot = true;
+			 }
+			 
+		 }
+		 if(B.id == 16) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.RubyPants;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiRuPants.png");
+				 //isItem1FoundSlot = true;
+			 }
+			 
+		 }
+		 if(B.id == 17) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.RubyBoots;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiRuBoots.png");
+				 //isItem1FoundSlot = true;
+			 }
+			 
+		 }
+		 if(B.id == 18) {
+			 if(isItem1FoundSlot == false) {
+				 
+				 item1 = Test.RubyPickaxe;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiRuPickaxe.png");
+				 //isItem1FoundSlot = true;
+			 }
+			 
+		 }
+		 if(B.id == 19) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.ReinforcedDoorItem;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiDoorReinforced.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 20) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.OpalHelmet;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiOpHelmet.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 21) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.OpalChestplate;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiOpChestplater.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 22) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.OpalPants;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiOpPants.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 23) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Test.OpalBoots;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiOpBoots.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 24) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.diamond;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiDiamond.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 25) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.emerald;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiEmerald.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 26) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.ender_eye;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiEnderEye.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 27) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.experience_bottle;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiExp.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 28) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.nether_star;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiNetherStar.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 29) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.saddle;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiSaddles.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 30) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.skull;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiWitherHead.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
+		 if(B.id == 31) {
+			 if(isItem1FoundSlot == false) {
+				 item1 = Items.magma_cream;
+				 GuiShop.furnaceGuiTextures = new ResourceLocation(
+			        		"money:textures/gui/ShopGuiMagma.png");
+				 //isItem1FoundSlot = true;
+			 }
+		 }
 	 }
 	 
 	ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft(), Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayWidth);

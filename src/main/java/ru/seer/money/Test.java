@@ -42,14 +42,14 @@ import seer.money.rendering.tileentities.PrinterTileEntity;
 import seer.money.rendering.tileentities.RubyArrow;
 
 
-@Mod(modid = "money", name = "Economy Mod", version = "2.7.0")
+@Mod(modid = "money", name = "Economy Mod", version = "0.2.0")
 public class Test implements IRecipe {
 	
 	@Instance("money")
 	public static Test instance;
 	@SidedProxy(clientSide = "ru.seer.money.ClientProxy", serverSide = "ru.seer.money.CommonProxy")
 	public static CommonProxy proxy;
-	public static String version = "2.7.0";
+	public static String version = "0.2.0";
 	public static Item SapphirePickaxe;
 	public static Item SapphireAxe;
 	public static Item SapphireSword;
