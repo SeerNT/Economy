@@ -400,8 +400,8 @@ public class GuiCashMachine extends GuiContainer {
 	 { 
 		 if(B.id == 1)
 		 {
-			 // IT IS WORKS
-			 //ContainerItem.slotWallet.inventory.setInventorySlotContents(0, new ItemStack(Test.Dollars,1));
+			 ExtendedPlayer props2 = ExtendedPlayer.get(pla);	
+			 props2.clearAllSlots = true;
 			 counter += 1;
 			 if (Wallet.open == true) {
 				  stack1 = ContainerCashMachine.slot4.inventory.getStackInSlot(0);
