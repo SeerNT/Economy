@@ -127,7 +127,7 @@ achievement.ruby.desc=Mine ruby
 achievement.amethyst=Better than diamond
 achievement.amethyst.desc=Mine amethyst
 tile.RubyBlock.name=Ruby Block
-tile.Shop.name=Shop WIP
+tile.Shop.name=Shop 
 
 item.RubyHelmet.name=Ruby Helmet
 item.RubyChestplate.name=Ruby Chestplate

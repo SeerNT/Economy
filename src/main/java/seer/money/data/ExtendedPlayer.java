@@ -20,6 +20,7 @@ public final static String EXT_PROP_NAME = "ExtendedPlayer";
 	public double currentMoney;
 	public int[] currentPassword = new int[4];
 	public boolean isDestroyed;
+	public static boolean clearAllSlots;
 	
 	/*
 	The default constructor takes no arguments, but I put in the Entity
@@ -70,6 +71,7 @@ public final static String EXT_PROP_NAME = "ExtendedPlayer";
 		properties.setInteger("CurrentPassword3", this.currentPassword[2]);
 		properties.setInteger("CurrentPassword4", this.currentPassword[3]);
 		properties.setBoolean("isDestroyed", this.isDestroyed);
+		properties.setBoolean("clearAllSlots", this.clearAllSlots);
 		
 		// Now add our custom tag to the player's tag with a unique name (our property's name)
 		// This will allow you to save multiple types of properties and distinguish between them
@@ -93,6 +95,8 @@ public final static String EXT_PROP_NAME = "ExtendedPlayer";
 		this.currentPassword[2] = properties.getInteger("CurrentPassword3");
 		this.currentPassword[3] = properties.getInteger("CurrentPassword4");
 		this.isDestroyed = properties.getBoolean("isDestroyed");
+		this.clearAllSlots = properties.getBoolean("clearAllSlots");
+		
 		// Just so you know it's working, add this line:
 
 	}

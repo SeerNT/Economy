@@ -105,6 +105,21 @@ public class Wallet extends Item{
 				 
 				if(counter == 2) {
 					counter = 0;
+					if(props.clearAllSlots == true) {
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(0, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(1, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(2, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(3, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(4, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(5, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(6, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(7, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(8, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(9, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(10, null);
+						ContainerItem.slotWallet.inventory.setInventorySlotContents(11, null);
+						props.clearAllSlots = false;
+					}
 					if(GuiCashMachine.opened == true) {
 						if(delete == true) {
 							ContainerItem.slotWallet.inventory.setInventorySlotContents(0, null);
